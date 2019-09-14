@@ -1,4 +1,5 @@
 # ALPACA
 The Automated Logic Processor And Creation Application
 
-![AlpacaLogoProto2](https://user-images.githubusercontent.com/23312333/64901880-5f962c00-d66c-11e9-9a40-2c13fe7db4d1.png)
+![AlpacaLogoProto2](https://user-images.githubusercontent.com/23312333/64908303-3dcc9180-d6cc-11e9-864e-3af92d5148d2.png)
+
