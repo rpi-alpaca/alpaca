@@ -10,8 +10,9 @@ private:
 	std::string input_statement;
 
 	//"v" for variable
-	//"a" for and
-	//"o" for or
+	//"&" for and
+	//"|" for or
+	//"~" for not
 	char statement_type;
 	bool value;
 
