@@ -17,7 +17,7 @@ Statement::Statement(const std::string& input) {
 		statement_type = '~';
 	}
 	else{
-		statement_type = 'v'
+		statement_type = 'v';
 	}
 }
 void Statement::interpretStatement() {

@@ -8,7 +8,8 @@ class Statement {
 private:
 	//Input statement is the statement to be interpreted from user input
 	std::string input_statement;
-
+	std::vector<string> variables;
+	std::vector<char> connectors;
 	//"v" for variable
 	//"&" for and
 	//"|" for or
