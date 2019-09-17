@@ -1,4 +1,5 @@
 #include "statement.h"
+#include <string>
 
 Statement::Statement() {
 	input_statement = "Variable_def";
@@ -20,6 +21,6 @@ Statement::Statement(const std::string& input) {
 	}
 }
 void Statement::interpretStatement() {
-	
+
 }
 
