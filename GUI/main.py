@@ -1,8 +1,3 @@
-# this is the python file
-# Gitpod test commit!
-<<<<<<< HEAD
-=======
-
 # This file is the main code for the GUI for ALPACA. It acts as
 #	the viewer in the MVC structure, and it allows interaction
 #	with the logic engine
@@ -24,5 +19,4 @@ class AlpacaApp(App):
 
 if __name__ == "__main__":
 	AlpacaApp().run()
->>>>>>> GUI
 
