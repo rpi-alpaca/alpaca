@@ -29,25 +29,39 @@
         orientation: 'vertical'
 
         BoxLayout:
-            orientation: 'vertical'
+            orientation: 'horizontal'
             Image:
                 source: '../Media/AlpacaLogoProto2.png'
-                size: root.width / 2, root.height / 2
-
 
         BoxLayout:
+            size_hint_y: 0.2
+            padding: 10
+            spacing: 10
+
             Button:
-                text: 'Goto help'
+                text: 'Help!'
+                font_name: 'DejaVuSans.ttf'
+
                 on_press:
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'Help'
+
+                Image:
+                    source: '../Media/Icons/help-icon.png'
+                    y: self.parent.y
+                    x: self.parent.x
+
             Button:
-                text: 'Goto new project'
+                text: 'New Project!'
+                font_name: 'DejaVuSans.ttf'
+
                 on_press:
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'NewProject'
             Button:
-                text: 'Goto existing project'
+                text: 'Existing Project!'
+                font_name: 'DejaVuSans.ttf'
+
                 on_press:
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'ExistingProject'
