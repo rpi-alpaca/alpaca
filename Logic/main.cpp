@@ -4,7 +4,10 @@
 #include "statement.h"
 #include "statementevaluator.h"
 
-void printTruthTable(const Statement& state) {
+// Returns a vector of booleans representing the last column
+// in the truth table of statement state
+std::vector<bool> makeTruthTable(const Statement& state) {
+	std::vector<bool> statement_values;
 	
 }
 
