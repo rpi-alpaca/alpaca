@@ -43,7 +43,7 @@
                 font_name: 'DejaVuSans.ttf'
 
                 on_press:
-                    root.manager.transition.direction = 'up'
+                    root.manager.transition.direction = 'right'
                     root.manager.current = 'Help'
 
                 Image:
@@ -63,7 +63,7 @@
                 font_name: 'DejaVuSans.ttf'
 
                 on_press:
-                    root.manager.transition.direction = 'up'
+                    root.manager.transition.direction = 'left'
                     root.manager.current = 'ExistingProject'
 
 <HelpScreen>:
@@ -74,7 +74,7 @@
             Button:
                 text: 'Back to menu'
                 on_press:
-                    root.manager.transition.direction = 'down'
+                    root.manager.transition.direction = 'left'
                     root.manager.current = 'Menu'
 
 <NewProjectScreen>:
@@ -96,5 +96,5 @@
             Button:
                 text: 'Back to menu'
                 on_press:
-                    root.manager.transition.direction = 'down'
+                    root.manager.transition.direction = 'right'
                     root.manager.current = 'Menu'
