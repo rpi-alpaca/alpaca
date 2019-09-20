@@ -17,6 +17,7 @@ private:
 	//"~" for not
 	char statement_type;
 	bool value;
+	bool is_provable;
 
 	//Interpreter for input_statment
 	void interpretStatement();
