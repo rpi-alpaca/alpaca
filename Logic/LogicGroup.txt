@@ -3,3 +3,8 @@ Logic Group
 Manager: David Kim
 
 Members: Alexandra Hsueh, Hali Cai, Nicholas Yao
+
+
+
+Random Ideas:
+Make a class for nodes so that we can make each node lead to a statement with a left and right side and then the evaluate function would just be recursing through the left and right and then go back up to evaluate the last part
