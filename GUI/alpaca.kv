@@ -18,21 +18,37 @@
 # 		text: "The Automated Logic Processor\n And Creation Application"
 
 <MenuScreen>:
-    FloatLayout:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: root.size
+            pos: root.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                source: '../Media/AlpacaLogoProto2.png'
+                size: root.width / 2, root.height / 2
+
+
         BoxLayout:
             Button:
                 text: 'Goto help'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'up'
-                    root.manager.current = 'Help'			
+                    root.manager.current = 'Help'
             Button:
                 text: 'Goto new project'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'up'
-                    root.manager.current = 'NewProject'	
+                    root.manager.current = 'NewProject'
             Button:
                 text: 'Goto existing project'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'ExistingProject'
 
@@ -43,7 +59,7 @@
                 text: "Help screen"
             Button:
                 text: 'Back to menu'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'down'
                     root.manager.current = 'Menu'
 
@@ -54,7 +70,7 @@
                 text: "New project screen"
             Button:
                 text: 'Back to menu'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'down'
                     root.manager.current = 'Menu'
 
@@ -65,6 +81,6 @@
                 text: "Existing project screen"
             Button:
                 text: 'Back to menu'
-                on_press: 
+                on_press:
                     root.manager.transition.direction = 'down'
                     root.manager.current = 'Menu'
