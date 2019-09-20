@@ -1,50 +1,70 @@
 #:kivy 1.11.1
 
-<Alpaca>:
-	canvas:
-		Rectangle:
-			pos: 0, 4*self.height / 5
-			size: self.width/2, self.height / 5
-			source: '../Media/AlpacaLogoProto2.png'
-		Rectangle:
-			pos: self.width/2, 4*self.height/5
-			size: self.width/2, self.height/5
+# <Alpaca>:
+# 	canvas:
+# 		Rectangle:
+# 			pos: 0, 4*self.height / 5
+# 			size: self.width/2, self.height / 5
+# 			source: '../Media/AlpacaLogoProto2.png'
+# 		Rectangle:
+# 			pos: self.width/2, 4*self.height/5
+# 			size: self.width/2, self.height/5
 
-	Label:
-		font_size: 45
-		color: 0,0,0,1
-		center_x: 3*root.width / 4
-		top: root.top - 50
-		text: "The Automated Logic Processor\n And Creation Application"
+# 	Label:
+# 		font_size: 45
+# 		color: 0,0,0,1
+# 		center_x: 3*root.width / 4
+# 		top: root.top - 50
+# 		text: "The Automated Logic Processor\n And Creation Application"
 
-	# Image:
-	# 	source: "../Media/AlpacaLogoProto2.png"
-	# 	size: root.width/4, root.height/6
-	# 	pos: 0, self.height
+<MenuScreen>:
+    FloatLayout:
+        BoxLayout:
+            Button:
+                text: 'Goto help'
+                on_press: 
+                    root.manager.transition.direction = 'up'
+                    root.manager.current = 'Help'			
+            Button:
+                text: 'Goto new project'
+                on_press: 
+                    root.manager.transition.direction = 'up'
+                    root.manager.current = 'NewProject'	
+            Button:
+                text: 'Goto existing project'
+                on_press: 
+                    root.manager.transition.direction = 'up'
+                    root.manager.current = 'ExistingProject'
 
-# <HomeScreen>:
-# 		BoxLayout:
-# 				Button:
-# 						text: 'Goto settings'
-# 						on_press: root.manager.current = 'Settings'
-# 				Button:
-# 						text: 'Goto logic'
-# 						on_press: root.manager.current = 'Logic'
-# 				Button:
-# 						text: 'Quit'
+<HelpScreen>:
+    FloatLayout:
+        BoxLayout:
+            Label:
+                text: "Help screen"
+            Button:
+                text: 'Back to menu'
+                on_press: 
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'Menu'
 
-# <SettingsScreen>:
-# 		BoxLayout:
-# 				Button:
-# 						text: 'My settings button'
-# 				Button:
-# 						text: 'Back to home'
-# 						on_press: root.manager.current = 'Home'
+<NewProjectScreen>:
+    FloatLayout:
+        BoxLayout:
+            Label:
+                text: "New project screen"
+            Button:
+                text: 'Back to menu'
+                on_press: 
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'Menu'
 
-# <LogicScreen>:
-# 		BoxLayout:
-# 				Button:
-# 						text: 'My logic button'
-# 				Button:
-# 						text: 'Back to home'
-# 						on_press: root.manager.current = 'Home'
+<ExistingProjectScreen>:
+    FloatLayout:
+        BoxLayout:
+            Label:
+                text: "Existing project screen"
+            Button:
+                text: 'Back to menu'
+                on_press: 
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'Menu'
