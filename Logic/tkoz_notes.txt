@@ -1,0 +1,13 @@
+
+Parse tree ideas:
+
+E = expression
+V = variable
+L = letter
+T = true
+F = false
+
+E = (E) | E+E | V
+V = L | T | F
+
+E -> E+E -> (E)+(E) -> (E+E)+(E+E) -> (V+V)+(V+V) -> (A+B)+(C+D)
