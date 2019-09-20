@@ -1,24 +1,50 @@
+#:kivy 1.11.1
+
 <Alpaca>:
 	canvas:
 		Rectangle:
-			pos: 0, 5*self.height / 6
-			size: self.width, self.height / 6
-
-	Label:
-		font_size: 70
-		color: 0,0,0,1 
-		center_x: root.width / 2
-		top: root.top - 30
-		text: "ALPACA"
+			pos: 0, 4*self.height / 5
+			size: self.width/2, self.height / 5
+			source: '../Media/AlpacaLogoProto2.png'
+		Rectangle:
+			pos: self.width/2, 4*self.height/5
+			size: self.width/2, self.height/5
 
 	Label:
 		font_size: 45
 		color: 0,0,0,1
-		center_x: root.width / 2
-		top: root.top - 100
-		text: "The Automated Logic Processor And Creation Application"
+		center_x: 3*root.width / 4
+		top: root.top - 50
+		text: "The Automated Logic Processor\n And Creation Application"
 
-#	Image:
-#		source: "../alpacaLogoProto2.png"
-#		size: root.width / 4, root.height / 4
-#		top: root.top
+	# Image:
+	# 	source: "../Media/AlpacaLogoProto2.png"
+	# 	size: root.width/4, root.height/6
+	# 	pos: 0, self.height
+
+# <HomeScreen>:
+# 		BoxLayout:
+# 				Button:
+# 						text: 'Goto settings'
+# 						on_press: root.manager.current = 'Settings'
+# 				Button:
+# 						text: 'Goto logic'
+# 						on_press: root.manager.current = 'Logic'
+# 				Button:
+# 						text: 'Quit'
+
+# <SettingsScreen>:
+# 		BoxLayout:
+# 				Button:
+# 						text: 'My settings button'
+# 				Button:
+# 						text: 'Back to home'
+# 						on_press: root.manager.current = 'Home'
+
+# <LogicScreen>:
+# 		BoxLayout:
+# 				Button:
+# 						text: 'My logic button'
+# 				Button:
+# 						text: 'Back to home'
+# 						on_press: root.manager.current = 'Home'
