@@ -1,0 +1,10 @@
+<HelpScreen>:
+    FloatLayout:
+        BoxLayout:
+            Label:
+                text: "Help screen"
+            Button:
+                text: 'Back to menu'
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'Menu'

@@ -65,36 +65,3 @@
                 on_press:
                     root.manager.transition.direction = 'left'
                     root.manager.current = 'ExistingProject'
-
-<HelpScreen>:
-    FloatLayout:
-        BoxLayout:
-            Label:
-                text: "Help screen"
-            Button:
-                text: 'Back to menu'
-                on_press:
-                    root.manager.transition.direction = 'left'
-                    root.manager.current = 'Menu'
-
-<NewProjectScreen>:
-    FloatLayout:
-        BoxLayout:
-            Label:
-                text: "New project screen"
-            Button:
-                text: 'Back to menu'
-                on_press:
-                    root.manager.transition.direction = 'down'
-                    root.manager.current = 'Menu'
-
-<ExistingProjectScreen>:
-    FloatLayout:
-        BoxLayout:
-            Label:
-                text: "Existing project screen"
-            Button:
-                text: 'Back to menu'
-                on_press:
-                    root.manager.transition.direction = 'right'
-                    root.manager.current = 'Menu'

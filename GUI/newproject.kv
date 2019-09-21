@@ -1,0 +1,10 @@
+<NewProjectScreen>:
+    FloatLayout:
+        BoxLayout:
+            Label:
+                text: "New project screen"
+            Button:
+                text: 'Back to menu'
+                on_press:
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'Menu'
