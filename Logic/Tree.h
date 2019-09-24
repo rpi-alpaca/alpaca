@@ -7,6 +7,7 @@ public:
 	StatementNode* left;
 	StatementNode* right;
 	std::string value
+	bool negation;
 };
 
 class StatementParser {
