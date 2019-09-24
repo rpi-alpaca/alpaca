@@ -6,7 +6,7 @@ public:
 
 	StatementNode* left;
 	StatementNode* right;
-	std::string value
+	std::string value;
 	bool negation;
 };
 
