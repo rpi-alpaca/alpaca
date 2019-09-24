@@ -1,6 +1,6 @@
 
 
-
+#include "statementevaluator.h"
 
 // CONSTRUCTOR		-	Initializes functionMap with characters mapped to the corresponding functions.
 StatementEvaluator::StatementEvaluator(){
