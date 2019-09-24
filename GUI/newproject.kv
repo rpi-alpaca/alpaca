@@ -1,5 +1,3 @@
-#:kivy 1.11.1
-
 <NewProjectScreen>:
     FloatLayout:
         BoxLayout:
@@ -15,13 +13,21 @@
                         do_default_tab: False
 
                         TabbedPanelItem:
-                            text: "Drag & drop"
+                            text: "1st Tab"
                             Label:
-                                text: "Drag stuff in"
+                                text: "Content of First Panel"
                         TabbedPanelItem:
-                            text: "text"
+                            text: "2nd Tab"
+                            BoxLayout:
+                                orientation: "vertical"
+                                Button:
+                                    text: "Stuff"
+                                Label:
+                                    text: "Content of Second Panel"
+                        TabbedPanelItem:
+                            text: "3rd Tab"
                             Label:
-                                text: "Input Text stuff"
+                                text: "Content of Third Panel"
             Button:
             	size:
                 text: 'Back to menu'
