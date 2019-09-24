@@ -8,4 +8,4 @@ public:
 
 private:
 	std::vector<bool> initStatements;
-}
+};
