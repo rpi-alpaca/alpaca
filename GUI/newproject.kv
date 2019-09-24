@@ -13,7 +13,6 @@
                         do_default_tab: False
 
                         TabbedPanelItem:
-<<<<<<< HEAD
                             text: "1st Tab"
                             Label:
                                 text: "Content of First Panel"
@@ -25,11 +24,6 @@
                                     text: "Stuff"
                                 Label:
                                     text: "Content of Second Panel"
-=======
-                            text: "Drag & drop"
-                            Label:
-                                text: "Drag stuff in"
->>>>>>> 3df5b36cc171b217a49d4253f54cfed3345152e0
                         TabbedPanelItem:
                             text: "3rd Tab"
                             Label:
@@ -37,6 +31,6 @@
             Button:
             	size:
                 text: 'Back to menu'
-                on_press:
+                on_release:
                     root.manager.transition.direction = 'down'
                     root.manager.current = 'Menu'
