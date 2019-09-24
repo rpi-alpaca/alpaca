@@ -15,6 +15,7 @@ StatementParser::StatementParser(const std::string& statement){
 	head = new StatementNode();
 	head -> value = statement;
 	if (statement.find('(') >= 0){
+		//Note to self: maybe we should count how many parentheses there are to check if the input is valid?
 		std::string stat1 = "";
 		std::string stat2 = "";
 		
