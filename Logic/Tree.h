@@ -13,8 +13,10 @@ public:
 class StatementParser {
 public: 
 	StatementParser();
-	StatementParser(StatementParser s1, StatementParser s2);
-	StatementParser(std::string statement);
+
+	//Combine two statements with a connector
+	StatementParser(const StatementParser& s1, const StatementParser& s2);
+	StatementParser(const std::string& statement);
 
 private:
 	StatementNode* Head;
