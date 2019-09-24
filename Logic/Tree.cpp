@@ -13,28 +13,28 @@ StatementParser::StatementParser(const std::string& statement){
 	//this->head = nullptr;
 	//split it up
 	head = new StatementNode();
+	head.value = statement;
 	if (statement.find('(') >= 0){
 
 	}
 	else{
 		if (statement.find('&') >= 0){
-
+			head.opType = '&';
 		}
 		else if(statement.find('|') >= 0){
-
+			head.opType = '|';
 		}
 		else if(statement.find('@') >= 0){
-
+			head.opType = '@';
 		}
 		else{
+			head.opType = 'v';
 			if(statement.find('~') >= 0){
 				head.negation = true;
 			}
 			else{
 				head.negation = false;
 			}
-			head.
-			head.value = statement;
 		}
 	}
 	
