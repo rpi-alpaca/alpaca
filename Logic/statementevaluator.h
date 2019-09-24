@@ -2,21 +2,19 @@
 #ifndef __STATEMENT_EVALUATOR_H_
 #define __STATEMENT_EVALUATOR_H_
 
-#include "statement.h"
-#include "statementevaluator.h"
 #include "Tree.h"
 #include <functional>
 #include <unordered_map>
+#include <vector>
 
 class StatementEvaluator{
 	public:
-		StatementEvaluator();
-		bool evaluateStatement(const Statement& s, const std::vector<int> variableTruthValues) const;
+		bool evaluateStatement(const StatementParser& s, const std::vector<int> variableTruthValues);
 		void printTruthTree(const StatementParser& s) const;
 
 	private:
 		//Mapping of operation characters to the corresponding functions.
-		std::unordered_map<char, std::function<bool (bool, bool)> > functionMap();
+		//std::unordered_map<char, std::function<bool (bool, bool)> > functionMap();
 
 		bool evaluateBranch(const StatementNode& p) const;
 };
