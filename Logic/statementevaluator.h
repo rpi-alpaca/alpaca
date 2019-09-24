@@ -14,6 +14,6 @@ class StatementEvaluator{
 	private:
 		//Mapping of operation characters to the corresponding functions.
 		std::unordered_map<char, std::function<bool (bool, bool)> > functionMap();
-}
+};
 
 #endif

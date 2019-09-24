@@ -6,7 +6,8 @@ public:
 
 	StatementNode* left;
 	StatementNode* right;
-	std::string value
+	std::string value;
+	char connector;
 	bool negation;
 };
 
@@ -15,10 +16,13 @@ public:
 	StatementParser();
 
 	//Combine two statements with a connector
-	StatementParser(const StatementParser& s1, const StatementParser& s2);
+	StatementParser(StatementParser& s1, StatementParser& s2);
 	StatementParser(const std::string& statement);
 
-private:
-	StatementNode* Head;
+	void changeHeadValue(const std::string& statement);
+	
 
-}
+private:
+	StatementNode* head;
+
+};
