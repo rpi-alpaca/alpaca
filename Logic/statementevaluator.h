@@ -2,6 +2,9 @@
 #ifndef __STATEMENT_EVALUATOR_H_
 #define __STATEMENT_EVALUATOR_H_
 
+#include "statement.h"
+#include "statementevaluator.h"
+#include "Tree.h"
 #include <functional>
 #include <unordered_map>
 

@@ -1,7 +1,6 @@
 
-#include "statement.h"
-#include "statementevaluator.h"
-#include "Tree.h"
+
+
 
 // CONSTRUCTOR		-	Initializes functionMap with characters mapped to the corresponding functions.
 StatementEvaluator::StatementEvaluator(){
