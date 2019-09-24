@@ -9,6 +9,7 @@ public:
 	std::string value;
 	char connector;
 	bool negation;
+	char opType;
 };
 
 class StatementParser {

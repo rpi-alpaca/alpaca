@@ -16,6 +16,31 @@ StatementParser::StatementParser(StatementParser& s1, StatementParser& s2) {
 StatementParser::StatementParser(const std::string& statement){
 	//this->head = nullptr;
 	//split it up
+	head = new StatementNode();
+	if (statement.find('(') >= 0){
+
+	}
+	else{
+		if (statement.find('&') >= 0){
+
+		}
+		else if(statement.find('|') >= 0){
+
+		}
+		else if(statement.find('@') >= 0){
+
+		}
+		else{
+			if(statement.find('~') >= 0){
+				head.negation = true;
+			}
+			else{
+				head.negation = false;
+			}
+			head.
+			head.value = statement;
+		}
+	}
 	
 }
 
