@@ -4,6 +4,7 @@
 from sys import exit
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.graphics import *
@@ -22,12 +23,11 @@ class ExistingProjectScreen(Screen):
 class MenuScreen(Screen):
 	pass
 
-# Loading Multiple .kv files  
-Builder.load_file('alpaca.kv') 
-Builder.load_file('existingproject.kv') 
-Builder.load_file('helpscreen.kv') 
-Builder.load_file('newproject.kv') 
-
+# Loading Multiple .kv files
+Builder.load_file('alpaca.kv')
+Builder.load_file('existingproject.kv')
+Builder.load_file('helpscreen.kv')
+Builder.load_file('newproject.kv')
 
 class AlpacaApp(App):
     def build(self):
@@ -42,4 +42,3 @@ class AlpacaApp(App):
 
 if __name__ == "__main__":
 	AlpacaApp().run()
-
