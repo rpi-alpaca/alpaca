@@ -16,6 +16,6 @@ class StatementEvaluator{
 		std::unordered_map<char, std::function<bool (bool, bool)> > functionMap();
 
 		bool evaluateBranch(const StatementNode& p) const;
-}
+};
 
 #endif

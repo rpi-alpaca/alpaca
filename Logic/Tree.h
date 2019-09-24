@@ -22,4 +22,4 @@ public:
 private:
 	StatementNode* Head;
 
-}
+};

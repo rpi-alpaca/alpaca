@@ -17,6 +17,7 @@ StatementParser::StatementParser(const std::string& statement){
 	if (statement.find('(') >= 0){
 		std::string stat1 = "";
 		std::string stat2 = "";
+		
 	}
 	else{
 		if (statement.find('&') >= 0){
