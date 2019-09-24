@@ -20,6 +20,6 @@ public:
 	StatementParser(const std::string& statement);
 
 private:
-	StatementNode* Head;
+	StatementNode* head;
 
 };
