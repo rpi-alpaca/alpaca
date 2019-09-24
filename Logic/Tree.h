@@ -8,6 +8,7 @@ public:
 	StatementNode* right;
 	std::string value;
 	bool negation;
+	char opType;
 };
 
 class StatementParser {
