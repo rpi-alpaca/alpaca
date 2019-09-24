@@ -10,6 +10,7 @@ from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.config import Config
 
 class HelpScreen(Screen):
 	pass
@@ -41,4 +42,5 @@ class AlpacaApp(App):
         return sm
 
 if __name__ == "__main__":
+	Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 	AlpacaApp().run()
