@@ -22,6 +22,10 @@
                 size_hint_y: 0.13
                 background_normal: '../Media/Icons/help-icon.png'
 
+                on_press:
+                    root.manager.transition.direction = 'down'
+                    root.manager.current = 'Help'
+
         BoxLayout:
             size_hint_y: 0.1
             padding: 10
@@ -34,16 +38,16 @@
                     size: root.width, root.height/10
 
             Button:
-                text: 'Help!'
+                text: 'Settings'
                 font_name: 'Roboto-Bold.ttf'
                 font_size: 42
 
                 on_press:
                     root.manager.transition.direction = 'right'
-                    root.manager.current = 'Help'
+                    root.manager.current = 'Settings'
 
             Button:
-                text: 'New Project!'
+                text: 'New Project'
                 font_name: 'Roboto-Bold.ttf'
                 font_size: 42
 
@@ -51,7 +55,7 @@
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'NewProject'
             Button:
-                text: 'Existing Project!'
+                text: 'Existing Project'
                 font_name: 'Roboto-Bold.ttf'
                 font_size: 42
 
