@@ -12,45 +12,51 @@
         orientation: 'vertical'
 
         BoxLayout:
+            spacing: 2
             orientation: 'horizontal'
             Image:
                 source: '../Media/AlpacaLogoProto2.png'
 
+            Button:
+                size_hint_x: 0.1
+                size_hint_y: 0.13
+                background_normal: '../Media/Icons/help-icon.png'
+
         BoxLayout:
-            size_hint_y: 0.2
+            size_hint_y: 0.1
             padding: 10
             spacing: 10
 
             canvas.before:
                 Color: 
-                    rgba: 0,0,0,1
+                    rgba: 0.7,0.7,0.7,1
                 Rectangle:
-                    size: root.width, root.height/6
+                    size: root.width, root.height/10
 
             Button:
                 text: 'Help!'
-                font_name: 'DejaVuSans.ttf'
+                font_name: 'Roboto-Bold.ttf'
+                font_size: 42
 
                 on_press:
                     root.manager.transition.direction = 'right'
                     root.manager.current = 'Help'
 
-                Image:
-                    source: '../Media/Icons/help-icon.png'
-                    y: self.parent.y
-                    x: self.parent.x
-
             Button:
                 text: 'New Project!'
-                font_name: 'DejaVuSans.ttf'
+                font_name: 'Roboto-Bold.ttf'
+                font_size: 42
 
                 on_press:
                     root.manager.transition.direction = 'up'
                     root.manager.current = 'NewProject'
             Button:
                 text: 'Existing Project!'
-                font_name: 'DejaVuSans.ttf'
+                font_name: 'Roboto-Bold.ttf'
+                font_size: 42
 
                 on_press:
                     root.manager.transition.direction = 'left'
                     root.manager.current = 'ExistingProject'
+    
+    
