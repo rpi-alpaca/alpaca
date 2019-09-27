@@ -3,9 +3,41 @@
 <HelpScreen>:
     FloatLayout:
         BoxLayout:
-            Label:
-                text: "Help screen"
+            orientation: "vertical"
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: .95
+
+                TabbedPanel:
+                    do_default_tab: False
+                    tab_width: self.size[0]/len(self.tab_list)
+
+                    TabbedPanelStrip:
+                        color: 1,0,0,1
+
+                    TabbedPanelItem:
+                        text: "What is ALPACA?"
+
+                        BoxLayout:
+                            orientation: "vertical"
+                            Label:
+                                text: "What is ALPACA?"
+                            Label:
+                                text: "ALPACA is an (A)utomated (L)ogic (P)rocessor (A)nd Creation (A)pplication!\n"
+                                      #"This program was created to help students design and learn formal logic."
+
+                    TabbedPanelItem:
+                        text: "How do you use it?"
+                        Label:
+                            text: "Content of Second Panel"
+                    TabbedPanelItem:
+                        text: "Who made this?"
+                        Label:
+                            text: "Content of Third Panel"
+
             Button:
+                size_hint_y: .1
                 text: 'Back to menu'
                 on_press:
                     root.manager.transition.direction = 'left'
