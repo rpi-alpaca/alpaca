@@ -31,12 +31,14 @@ StatementParser::StatementParser(const std::string& statement){
 			int nextStart = 1;
 			int nextEnd = 1;
 			bool contin = true;
+			int nextParen;
+			int nextClosed;
 			while(contin){
-				int nextParen = statement.find('(', nextStart);
-				int nextClosed = statement.find(')', nextEnd)
+				nextParen = statement.find('(', nextStart);
+				nextClosed = statement.find(')', nextEnd);
 				if(nextClosed = std::string::npos){
 					//error
-					System.out.println("Error: Incorrect inputs")
+					std::cerr << "Error: Incorrect inputs" << std::endl;
 					break;
 				}
 				if(nextParen != std::string::npos && nextParen < nextClosed){
@@ -49,9 +51,9 @@ StatementParser::StatementParser(const std::string& statement){
 			}
 			if(!contin){
 				// just a check to make sure when there is an error it doesn't go into here
-				stat1 = statement.substr(0, firstParen);
-				stat2 = statement.substr(firstParen + 1, nextClosed);
-				
+				stat1 = statement.substr(0, nextClosed);
+				stat2 = statement.substr(nextClosed + 1);
+				head->left = 
 			}
 		}
 		else{
