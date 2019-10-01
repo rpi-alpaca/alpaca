@@ -13,7 +13,7 @@
 
                     TabbedPanel:
                         do_default_tab: False
-
+                        background_color: 1,1,1,1
                         TabbedPanelItem:
                             text: "Drag&drop"
                             Label:
@@ -27,7 +27,7 @@
                                     background_color: 0, 0, 0.1, 1
                                     multiline: True
                                     text: "test"
-                                    
+                            
 
 
             BoxLayout:
@@ -40,7 +40,11 @@
                         
                         TabbedPanelItem:
                             text: 'Blocks'
+                            Button:
+                                text: 'add block'
 
                         TabbedPanelItem:
                             text: 'Lemmas'
+                            Button:
+                                text: 'import lemma'
                         
