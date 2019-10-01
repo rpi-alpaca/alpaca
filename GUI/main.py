@@ -11,9 +11,11 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
 
 class HelpScreen(Screen):
+
 	pass
 
 class NewProjectScreen(Screen):
+        
 	pass
 
 class ExistingProjectScreen(Screen):
@@ -36,7 +38,7 @@ class AlpacaApp(App):
         sm.add_widget(HelpScreen(name='Help'))
         sm.add_widget(NewProjectScreen(name='NewProject'))
         sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
-        sm.current = 'Menu'
+        sm.current = 'NewProject'
         return sm
 
 if __name__ == "__main__":
