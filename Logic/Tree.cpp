@@ -36,7 +36,7 @@ StatementParser::StatementParser(const std::string& statement){
 				int nextClosed = statement.find(')', nextEnd)
 				if(nextClosed = std::string::npos){
 					//error
-					System.out.println("Error: Incorrect inputs")
+					std::cerr << "Error: Incorrect inputs" << std::endl;
 					break;
 				}
 				if(nextParen != std::string::npos && nextParen < nextClosed){
