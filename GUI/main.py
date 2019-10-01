@@ -9,13 +9,18 @@ from kivy.graphics import *
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
+from kivy.uix.button import Button
 
 class HelpScreen(Screen):
 
 	pass
 
 class NewProjectScreen(Screen):
-	pass
+        def createNew(self):
+                self.submit = Button(text="Test", font_size = 40, size_hint = (0.25, 0.2))
+                self.submit.bind(on_release=self.createNew)
+                self.add_widget(self.submit)
+                return
 
 class ExistingProjectScreen(Screen):
     pass
