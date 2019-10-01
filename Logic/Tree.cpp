@@ -27,39 +27,34 @@ StatementParser::StatementParser(const std::string& statement){
 		//Note to self: maybe we should count how many parentheses there are to check if the input is valid?
 		std::string stat1 = "";
 		std::string stat2 = "";
-		if(firstParen == 0){
-			int nextStart = 1;
-			int nextEnd = 1;
-			bool contin = true;
-			int nextParen;
-			int nextClosed;
-			while(contin){
-				nextParen = statement.find('(', nextStart);
-				nextClosed = statement.find(')', nextEnd);
-				if(nextClosed = std::string::npos){
-					//error
-					std::cerr << "Error: Incorrect inputs" << std::endl;
-					break;
-				}
-				if(nextParen != std::string::npos && nextParen < nextClosed){
-					nextStart = nextParen + 1;
-					nextClosed = nextParen + 1;
-				}
-				else{
-					contin = false;
-				}
+		int nextStart = 1;
+		int nextEnd = 1;
+		bool contin = true;
+		int nextParen;
+		int nextClosed;
+		while(contin){
+			nextParen = statement.find('(', nextStart);
+			nextClosed = statement.find(')', nextEnd);
+			if(nextClosed = std::string::npos){
+				//error
+				std::cerr << "Error: Incorrect inputs" << std::endl;
+				break;
 			}
-			if(!contin){
-				// just a check to make sure when there is an error it doesn't go into here
-				stat1 = statement.substr(0, nextClosed);
-				stat2 = statement.substr(nextClosed + 1);
-				head->left = 
+			if(nextParen != std::string::npos && nextParen < nextClosed){
+				nextStart = nextParen + 1;
+				nextClosed = nextParen + 1;
+			}
+			else{
+				contin = false;
 			}
 		}
-		else{
-
+		if(!contin){
+			// just a check to make sure when there is an error it doesn't go into here
+			stat1 = statement.substr(0, nextClosed);
+			stat2 = statement.substr(nextClosed + 1);
+			head->left = new StatementParser(stat1);
+			head->right = new StatementParser(stat2);
 		}
-		
 	}
 	else{
 		if (statement.find('&') >= 0){

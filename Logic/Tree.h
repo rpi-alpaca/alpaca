@@ -8,8 +8,8 @@ class StatementNode {
 public:
 	StatementNode() : left(nullptr), right(nullptr) {}
 
-	StatementNode* left;
-	StatementNode* right;
+	StatementParser* left;
+	StatementParser* right;
 	std::string value;
 	char connector;
 	bool negation;
