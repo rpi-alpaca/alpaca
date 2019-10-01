@@ -10,13 +10,15 @@ from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.config import Config
+from kivy.core.window import Window
+
+Window.size = (1000, 700)
+Window.minimum_width = 1000;
+Window.minimum_height = 700;
+
 
 class HelpScreen(Screen):
 	pass
-
-class SettingsScreen(Screen):
-    pass
 
 class NewProjectScreen(Screen):
 	pass
@@ -29,7 +31,6 @@ class MenuScreen(Screen):
 
 # Loading Multiple .kv files
 Builder.load_file('alpaca.kv')
-Builder.load_file('settings.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
 Builder.load_file('newproject.kv')
@@ -39,7 +40,6 @@ class AlpacaApp(App):
         # Create the screen manager
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='Menu'))
-        sm.add_widget(SettingsScreen(name='Settings'))
         sm.add_widget(HelpScreen(name='Help'))
         sm.add_widget(NewProjectScreen(name='NewProject'))
         sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
@@ -47,5 +47,4 @@ class AlpacaApp(App):
         return sm
 
 if __name__ == "__main__":
-	Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 	AlpacaApp().run()
