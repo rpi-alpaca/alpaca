@@ -15,20 +15,32 @@
                         do_default_tab: False
 
                         TabbedPanelItem:
-                            text: "1st Tab"
+                            text: "Drag&drop"
                             Label:
                                 text: "Content of First Panel"
                         TabbedPanelItem:
-                            text: "2nd Tab"
-                            Label:
-                                text: "Content of Second Panel"
+                            text: "text"
+
+                            BoxLayout:
+                                TextInput:
+                                    color: 1, 1, 1, 1
+                                    background_color: 0, 0, 0.1, 1
+                                    multiline: True
+                                    text: "test"
+                                    
+
+
+            BoxLayout:
+                orientation: "horizontal"
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    TabbedPanel:
+                        do_default_tab: False
+                        
                         TabbedPanelItem:
-                            text: "3rd Tab"
-                            Label:
-                                text: "Content of Third Panel"
-            Button:
-            	size:
-                text: 'Back to menu'
-                on_press:
-                    root.manager.transition.direction = 'down'
-                    root.manager.current = 'Menu'
+                            text: 'Blocks'
+
+                        TabbedPanelItem:
+                            text: 'Lemmas'
+                        
