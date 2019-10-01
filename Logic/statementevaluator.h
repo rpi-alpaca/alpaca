@@ -9,7 +9,7 @@
 
 class StatementEvaluator{
 	public:
-		//bool evaluateStatement(const StatementParser& s, const std::vector<int>& variableTruthValues) const;
+		bool evaluateStatement(StatementParser& s, std::unordered_map<std::string, bool>& variableValues) const;
 
 	private:
 		//Mapping of operation characters to the corresponding functions.
@@ -19,7 +19,7 @@ class StatementEvaluator{
 			{'@', [](bool p, bool q){return p xor q;}}
 		};
 
-		//bool evaluateBranch(const StatementNode& p, const std::vector<int>& variableTruthValues) const;
+		bool evaluateBranch(StatementNode* p, std::unordered_map<std::string, bool>& variableValues) const;
 };
 
 #endif
