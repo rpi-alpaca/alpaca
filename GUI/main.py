@@ -15,7 +15,6 @@ class HelpScreen(Screen):
 	pass
 
 class NewProjectScreen(Screen):
-        
 	pass
 
 class ExistingProjectScreen(Screen):
