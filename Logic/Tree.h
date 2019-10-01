@@ -1,8 +1,11 @@
+#ifndef _TREE_H_
+#define _TREE_H_
+
 #include <string>
 
 class StatementNode {
 public:
-	StatementNode() : left(NULL), right(NULL), value(NULL) {}
+	StatementNode() : left(nullptr), right(nullptr) {}
 
 	StatementNode* left;
 	StatementNode* right;
@@ -15,15 +18,20 @@ public:
 class StatementParser {
 public: 
 	StatementParser();
+	StatementParser(const StatementParser& s);
 
 	//Combine two statements with a connector
-	StatementParser(StatementParser& s1, StatementParser& s2);
+	StatementParser(const StatementParser& s1, const StatementParser& s2);
 	StatementParser(const std::string& statement);
 
 	void changeHeadValue(const std::string& statement);
 	
 
 private:
+	StatementNode* copy_statement(StatementNode* old_node);
+
 	StatementNode* head;
 
 };
+
+#endif

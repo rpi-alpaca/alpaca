@@ -13,7 +13,6 @@ class StatementEvaluator{
 
 	private:
 		//Mapping of operation characters to the corresponding functions.
-		std::unordered_map<char, std::function<bool (bool, bool)> > functionMap();
 		std::unordered_map<char, std::function<bool (bool, bool)> > functionMap = {
 			{'|', [](bool p, bool q){return p || q;}},
 			{'&', [](bool p, bool q){return p && q;}},
