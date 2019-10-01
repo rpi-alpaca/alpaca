@@ -13,6 +13,7 @@
 #include "statement.h"
 #include "statementevaluator.h"
 #include "Tree.h"
+#include "LogicGate.h"
 
 int main(int argc, char* argv[]) {
 	StatementParser state1;
