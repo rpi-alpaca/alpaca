@@ -13,8 +13,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 
 Window.size = (1000, 700)
-Window.minimum_width = 1000;
-Window.minimum_height = 700;
+Window.minimum_width = 1000
+Window.minimum_height = 700
 
 class HelpScreen(Screen):
 	pass
