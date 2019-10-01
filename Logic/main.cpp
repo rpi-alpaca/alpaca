@@ -21,6 +21,13 @@ int main(int argc, char* argv[]) {
 	state2.changeHeadValue("Hali's shirt is blue");
 	StatementParser combined(state1, state2);
 
+	state1.print();
+	std::cout << std::endl;
+	state2.print();
+	std::cout << std::endl;
+	combined.print();
+	std::cout << std::endl;
+
 
 	std::cout<< "Testing" <<std::endl;
 

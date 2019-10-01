@@ -1,6 +1,7 @@
 #ifndef _TREE_H_
 #define _TREE_H_
 
+#include <iostream>
 #include <string>
 
 class StatementNode {
@@ -26,6 +27,8 @@ public:
 
 	void changeHeadValue(const std::string& statement);
 	
+	void print() const;
+	void printNode(StatementNode* s) const;
 
 private:
 	StatementNode* copy_statement(StatementNode* old_node);
