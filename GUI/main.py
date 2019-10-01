@@ -16,7 +16,6 @@ Window.size = (1000, 700)
 Window.minimum_width = 1000;
 Window.minimum_height = 700;
 
-
 class HelpScreen(Screen):
 	pass
 
@@ -29,11 +28,15 @@ class ExistingProjectScreen(Screen):
 class MenuScreen(Screen):
 	pass
 
+class SettingsScreen(Screen):
+	pass
+
 # Loading Multiple .kv files
 Builder.load_file('alpaca.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
 Builder.load_file('newproject.kv')
+Builder.load_file('settings.kv')
 
 class AlpacaApp(App):
     def build(self):
@@ -41,6 +44,7 @@ class AlpacaApp(App):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='Menu'))
         sm.add_widget(HelpScreen(name='Help'))
+        sm.add_widget(SettingsScreen(name='Settings'))
         sm.add_widget(NewProjectScreen(name='NewProject'))
         sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
         sm.current = 'Menu'
