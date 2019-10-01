@@ -34,7 +34,7 @@ private:
 	StatementNode* copy_statement(StatementNode* old_node);
 
 	StatementNode* head;
-
+	friend class StatementEvaluator;
 };
 
 #endif
