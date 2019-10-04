@@ -16,8 +16,11 @@ Window.size = (1000, 700)
 Window.minimum_width = 1000
 Window.minimum_height = 700
 
+class HelpOptions(TabbedPanel):
+    pass
+
 class HelpScreen(Screen):
-	pass
+    pass
 
 class NewProjectScreen(Screen):
 	pass

@@ -4,6 +4,7 @@
     FloatLayout:
         BoxLayout:
             orientation: "vertical"
+            font_name: 'Roboto-Bold.ttf'
 
             BoxLayout:
                 orientation: "horizontal"
@@ -12,9 +13,11 @@
                 TabbedPanel:
                     do_default_tab: False
                     tab_width: self.size[0]/len(self.tab_list)
-
+                    
                     TabbedPanelStrip:
-                        color: 1,0,0,1
+                        background_color: (0, 0, 1, .5)    # 50% translucent blue
+                        border: [0, 0, 0, 0]
+                        background_image: ''
 
                     TabbedPanelItem:
                         text: "What is ALPACA?"
@@ -22,15 +25,36 @@
                         BoxLayout:
                             orientation: "vertical"
                             Label:
+                                font_size: 42
                                 text: "What is ALPACA?"
                             Label:
-                                text: "ALPACA is an (A)utomated (L)ogic (P)rocessor (A)nd Creation (A)pplication!\n"
-                                      #"This program was created to help students design and learn formal logic."
+                                font_size: 32
+                                text: "ALPACA is an (A)utomated (L)ogic (P)rocessor (A)nd Creation (A)pplication!\nThis program was created to help students design and learn formal logic.\nIt allows for designing and solving formal logic statements through either a text-based or drag and drop based interface."
 
                     TabbedPanelItem:
                         text: "How do you use it?"
-                        Label:
-                            text: "Content of Second Panel"
+                        
+                        BoxLayout:
+                            orientation: "vertical"
+                            Label:
+                                font_size: 42
+                                text: "How do you use it?"
+                            Label:
+                                font_size: 32
+                                text: "You have two options for how to use ALPACA, either the text-based interface or the drag and drop interface.\n"
+
+                            GridLayout:
+                                rows: 1
+                                columns: 2
+
+                                Label:
+                                    font_size: 28
+                                    text: "The text-based interface is a command linethat takes special\n characters to denotecertain logical operators."
+
+                                Label:
+                                    font_size: 28
+                                    text: "The drag and drop interface is comprised of blocks that you\n can connect together toform logical constructs."
+
                     TabbedPanelItem:
                         text: "Who made this?"
                         Label:
@@ -45,7 +69,7 @@
                     Color: 
                         rgba: 0.7,0.7,0.7,1
                     Rectangle:
-                        size: root.width, root.height/10
+                        size: root.width, root.height/11
 
                 Button:
                     text: 'Back to Menu'
