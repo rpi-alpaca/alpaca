@@ -10,7 +10,7 @@
 
 class StatementEvaluator{
 	public:
-		bool evaluateStatement(StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues) const;
+		bool evaluateStatement(const StatementParser& s, const std::vector<std::pair<std::string, bool> >& variableTruthValues) const;
 		void printTruthTable(const StatementParser& s, const std::vector<std::string> variableNames) const;
 
 	private:
@@ -21,7 +21,7 @@ class StatementEvaluator{
 			{'@', [](bool p, bool q){return p xor q;}}
 		};
 
-		bool evaluateBranch(StatementNode* p, std::unordered_map<std::string, bool>& variableValues) const;
+		bool evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const;
 		void recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, int index) const;
 };
 
