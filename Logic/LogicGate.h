@@ -11,6 +11,7 @@ class LogicGate{
 public:
 	bool addStatement(char addState);
 	void asciiDraw();
+	bool changeOnOff(char stateName, bool newSwitch);
 
 private:
 	std::unordered_map<char, bool> initStatements;
