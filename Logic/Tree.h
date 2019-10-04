@@ -8,8 +8,8 @@ class StatementNode {
 public:
 	StatementNode() : left(nullptr), right(nullptr) {}
 
-	StatementParser* left;
-	StatementParser* right;
+	StatementNode* left;
+	StatementNode* right;
 	std::string value;
 	char connector;
 	bool negation;
@@ -32,7 +32,7 @@ public:
 
 private:
 	StatementNode* copy_statement(StatementNode* old_node);
-
+	void parseStatement(StatementNode* n, std::string statement);
 	StatementNode* head;
 	friend class StatementEvaluator;
 };
