@@ -55,9 +55,9 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, int index) const{
 	if(index == variableTruthValues.size()){
 		for(int i = 0; i < variableTruthValues.size(); i++){
-			std::cout << std::setw(3) << variableTruthValues[index].second << " ";
+			std::cout << std::setw(5) << std::boolalpha << std::left << variableTruthValues[i].second << " ";
 		}
-		std::cout << std::boolalpha << evaluateStatement(s, variableTruthValues) << "\n";
+		std::cout << evaluateStatement(s, variableTruthValues) << "\n";
 	}
 	else{
 		recurseDownArray(s, variableTruthValues, index + 1);
