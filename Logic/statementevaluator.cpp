@@ -24,13 +24,18 @@ bool StatementEvaluator::evaluateStatement(const StatementParser& s, const std::
  * Effects: Prints a truth table
  * Returns: Nothing
  */
-void StatementEvaluator::printTruthTable(const StatementParser& s, const std::vector<std::string> variableNames) const{
+void StatementEvaluator::printTruthTable(const StatementParser& s, const std::vector<std::string>& variableNames) const{
+	int maxStringSize = 0;
 	std::vector<std::pair<std::string, bool> > variableTruthValues;
 	for(unsigned int i = 0; i < variableNames.size(); i++){
 		variableTruthValues.push_back(std::make_pair(variableNames[i], true));
+		if(maxStringSize < variableNames[i].size())
+			maxStringSize = variableNames[i].size();
 	}
 
-	recurseDownArray(s, variableTruthValues, 0);
+	printVariableHeaders(variableNames, maxStringSize);
+
+	recurseDownArray(s, variableTruthValues, 0, maxStringSize);
 }
 
 
@@ -39,7 +44,7 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 	//Node is not an operation (variable)
 	if(p -> opType == 'v'){
 		return variableValues.find(p -> value) -> second;
-	}
+	} 
 	else if(p -> opType == '~'){
 		return !evaluateBranch(p -> left, variableValues);
 	}
@@ -52,17 +57,25 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 
 
 //PRIVATE: Helper function for printTruthTable
-void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, unsigned int index) const{
+void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, unsigned int index, unsigned int maxStringSize) const{
 	if(index == variableTruthValues.size()){
 		for(unsigned int i = 0; i < variableTruthValues.size(); i++){
-			std::cout << std::setw(5) << std::boolalpha << std::left << variableTruthValues[i].second << " ";
+			std::cout << std::setw(maxStringSize) << std::boolalpha << std::left << variableTruthValues[i].second << " ";
 		}
 		std::cout << evaluateStatement(s, variableTruthValues) << "\n";
 	}
 	else{
-		recurseDownArray(s, variableTruthValues, index + 1);
+		recurseDownArray(s, variableTruthValues, index + 1, maxStringSize);
 		variableTruthValues[index].second = false;
-		recurseDownArray(s, variableTruthValues, index + 1);
+		recurseDownArray(s, variableTruthValues, index + 1, maxStringSize);
 		variableTruthValues[index].second = true;
 	}
+}
+
+
+void StatementEvaluator::printVariableHeaders(const std::vector<std::string>& variableNames, int maxStringSize) const{
+	for(unsigned int i = 0; i < variableNames.size(); i++){
+		std::cout << std::setw(maxStringSize) << std::left << variableNames[i] << " ";
+	}
+	std::cout << "\n";
 }
