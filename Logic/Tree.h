@@ -32,7 +32,7 @@ public:
 
 private:
 	StatementNode* copy_statement(StatementNode* old_node);
-	void parseStatement(StatementNode* n, std::string statement);
+	void parseStatement(StatementNode* n, const std::string& statement);
 	StatementNode* head;
 	friend class StatementEvaluator;
 };
