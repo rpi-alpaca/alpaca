@@ -57,97 +57,103 @@ StatementNode* StatementParser::copy_statement(StatementNode* old_node) {
 	return new_node;
 }
 
-void StatementParser::parseStatement(StatementNode* n, std::string statement){
-	int firstParen = statement.find('(');
-	if (firstParen != -1){
-		//Note to self: maybe we should count how many parentheses there are to check if the input is valid?
-		std::string stat1 = "";
-		std::string stat2 = "";
-		int nextStart = 1;
-		int nextEnd = 1;
-		bool contin = true;
-		int nextParen;
-		int nextClosed;
-		while(contin){
-			nextParen = statement.find('(', nextStart);
-			nextClosed = statement.find(')', nextEnd);
-			if(nextClosed == -1){
-				//error
-				std::cerr << "Error: Incorrect inputs" << std::endl;
-				break;
-			}
-			if(nextParen != -1 && nextParen < nextClosed){
-				nextStart = nextParen + 1;
-				nextClosed = nextParen + 1;
-			}
-			else{
-				contin = false;
-			}
-		}
-		if(!contin){
-			// just a check to make sure when there is an error it doesn't go into here
-			stat1 = statement.substr(0, nextClosed);
-			int tmp = nextClosed;
-			if(nextParen >= 0){
-				while(tmp < nextParen){
-					if(statement[tmp] == '&'){
-						n->opType = '&';
-						break;
-					}
-					else if(statement[tmp] == '|'){
-						n->opType = '|';
-						break;
-					}
-					else if(statement[tmp] == '@'){
-						n->opType = '@';
-						break;
-					}
-					tmp++;
-				}
-				stat2 = statement.substr(tmp + 1);
-				n->right = new StatementNode();
-				parseStatement(n->right, stat2);
-			}
-			n -> value = statement;
-			n->left = new StatementNode();
-			parseStatement(n->left, stat1);
-		}
-	}
-	else{
-		if (statement.find('&') >= 0){
-			n -> opType = '&';
-			n -> value = statement;
-			n->left = new StatementNode();
-			parseStatement(n->left, statement.substr(0, statement.find('&')));
-			n->right = new StatementNode();
-			parseStatement(n->right, statement.substr(statement.find('&') + 1));
-		}
-		else if(statement.find('|') >= 0){
-			n -> opType = '|';
-			n -> value = statement;
-			n->left = new StatementNode();
-			parseStatement(n->left, statement.substr(0, statement.find('|')));
-			n->right = new StatementNode();
-			parseStatement(n->right, statement.substr(statement.find('|') + 1));
-		}
-		else if(statement.find('@') >= 0){
-			n -> opType = '@';
-			n -> value = statement;
-			n->left = new StatementNode();
-			parseStatement(n->left, statement.substr(0, statement.find('@')));
-			n->right = new StatementNode();
-			parseStatement(n->right, statement.substr(statement.find('@') + 1));
-		}
-		else{
-			n -> opType = 'v';
-			if(statement.find('~') >= 0){
-				n -> negation = true;
-				n -> value = statement.substr(statement.find('~'));
-			}
-			else{
-				n -> negation = false;
-				n -> value = statement;
-			}
-		}
+// void StatementParser::parseStatement(StatementNode* n, std::string statement){
+// 	int firstParen = statement.find('(');
+// 	if (firstParen != -1){
+// 		//Note to self: maybe we should count how many parentheses there are to check if the input is valid?
+// 		std::string stat1 = "";
+// 		std::string stat2 = "";
+// 		int nextStart = 1;
+// 		int nextEnd = 1;
+// 		bool contin = true;
+// 		int nextParen;
+// 		int nextClosed;
+// 		while(contin){
+// 			nextParen = statement.find('(', nextStart);
+// 			nextClosed = statement.find(')', nextEnd);
+// 			if(nextClosed == -1){
+// 				//error
+// 				std::cerr << "Error: Incorrect inputs" << std::endl;
+// 				break;
+// 			}
+// 			if(nextParen != -1 && nextParen < nextClosed){
+// 				nextStart = nextParen + 1;
+// 				nextClosed = nextParen + 1;
+// 			}
+// 			else{
+// 				contin = false;
+// 			}
+// 		}
+// 		if(!contin){
+// 			// just a check to make sure when there is an error it doesn't go into here
+// 			stat1 = statement.substr(0, nextClosed);
+// 			int tmp = nextClosed;
+// 			if(nextParen >= 0){
+// 				while(tmp < nextParen){
+// 					if(statement[tmp] == '&'){
+// 						n->opType = '&';
+// 						break;
+// 					}
+// 					else if(statement[tmp] == '|'){
+// 						n->opType = '|';
+// 						break;
+// 					}
+// 					else if(statement[tmp] == '@'){
+// 						n->opType = '@';
+// 						break;
+// 					}
+// 					tmp++;
+// 				}
+// 				stat2 = statement.substr(tmp + 1);
+// 				n->right = new StatementNode();
+// 				parseStatement(n->right, stat2);
+// 			}
+// 			n -> value = statement;
+// 			n->left = new StatementNode();
+// 			parseStatement(n->left, stat1);
+// 		}
+// 	}
+// 	else{
+// 		if (statement.find('&') >= 0){
+// 			n -> opType = '&';
+// 			n -> value = statement;
+// 			n->left = new StatementNode();
+// 			parseStatement(n->left, statement.substr(0, statement.find('&')));
+// 			n->right = new StatementNode();
+// 			parseStatement(n->right, statement.substr(statement.find('&') + 1));
+// 		}
+// 		else if(statement.find('|') >= 0){
+// 			n -> opType = '|';
+// 			n -> value = statement;
+// 			n->left = new StatementNode();
+// 			parseStatement(n->left, statement.substr(0, statement.find('|')));
+// 			n->right = new StatementNode();
+// 			parseStatement(n->right, statement.substr(statement.find('|') + 1));
+// 		}
+// 		else if(statement.find('@') >= 0){
+// 			n -> opType = '@';
+// 			n -> value = statement;
+// 			n->left = new StatementNode();
+// 			parseStatement(n->left, statement.substr(0, statement.find('@')));
+// 			n->right = new StatementNode();
+// 			parseStatement(n->right, statement.substr(statement.find('@') + 1));
+// 		}
+// 		else{
+// 			n -> opType = 'v';
+// 			if(statement.find('~') >= 0){
+// 				n -> negation = true;
+// 				n -> value = statement.substr(statement.find('~'));
+// 			}
+// 			else{
+// 				n -> negation = false;
+// 				n -> value = statement;
+// 			}
+// 		}
+// 	}
+// }
+
+void StatementParser::parseStatement(StatementNode* n, const std::string& statement){
+	for (unsigned int i = 0; i < statement.size(); i++) {
+		
 	}
 }
