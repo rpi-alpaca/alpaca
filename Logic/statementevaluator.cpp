@@ -10,7 +10,7 @@
 bool StatementEvaluator::evaluateStatement(const StatementParser& s, const std::vector<std::pair<std::string, bool> >& variableTruthValues) const{
 	//Creates a hash table from variable names to boolean value
 	std::unordered_map<std::string, bool> variableValues;
-	for(int i = 0; i < variableTruthValues.size(); i++){
+	for(unsigned int i = 0; i < variableTruthValues.size(); i++){
 		variableValues[variableTruthValues[i].first] = variableTruthValues[i].second;
 	}
 
@@ -26,7 +26,7 @@ bool StatementEvaluator::evaluateStatement(const StatementParser& s, const std::
  */
 void StatementEvaluator::printTruthTable(const StatementParser& s, const std::vector<std::string> variableNames) const{
 	std::vector<std::pair<std::string, bool> > variableTruthValues;
-	for(int i = 0; i < variableNames.size(); i++){
+	for(unsigned int i = 0; i < variableNames.size(); i++){
 		variableTruthValues.push_back(std::make_pair(variableNames[i], true));
 	}
 
@@ -52,9 +52,9 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 
 
 //PRIVATE: Helper function for printTruthTable
-void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, int index) const{
+void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, unsigned int index) const{
 	if(index == variableTruthValues.size()){
-		for(int i = 0; i < variableTruthValues.size(); i++){
+		for(unsigned int i = 0; i < variableTruthValues.size(); i++){
 			std::cout << std::setw(5) << std::boolalpha << std::left << variableTruthValues[i].second << " ";
 		}
 		std::cout << evaluateStatement(s, variableTruthValues) << "\n";

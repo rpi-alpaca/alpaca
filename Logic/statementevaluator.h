@@ -22,7 +22,7 @@ class StatementEvaluator{
 		};
 
 		bool evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const;
-		void recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, int index) const;
+		void recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, unsigned int index) const;
 };
 
 #endif
