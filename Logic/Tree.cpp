@@ -57,7 +57,7 @@ StatementNode* StatementParser::copy_statement(StatementNode* old_node) {
 	return new_node;
 }
 
-void StatementParser::parseStatement(StatementNode* n, std::string statement){
+void StatementParser::parseStatement(StatementNode* n, const std::string& statement){
 	int firstParen = statement.find('(');
 	if (firstParen != -1){
 		//Note to self: maybe we should count how many parentheses there are to check if the input is valid?
