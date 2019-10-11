@@ -8,10 +8,7 @@
 
 
 #include <iostream>
-#include "statement.h"
-#include "statementevaluator.h"
 #include "Tree.h"
-#include "LogicGate.h"
 
 
 void statementEvaluatorTest();
