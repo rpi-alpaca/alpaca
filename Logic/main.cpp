@@ -8,12 +8,26 @@
 
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include "statementevaluator.h"
+#include "LogicGate.h"
 #include "Tree.h"
 
 
 void statementEvaluatorTest();
 
 int main(int argc, char* argv[]) {
+	std::cout<< "Testing" <<std::endl;
+
+	statementEvaluatorTest();
+
+	return 0;
+}
+
+void statementParserTest(){
+	std::cout << "RUNNING STATEMENTPARSERTEST\n\n";
+
 	StatementParser state1;
 	StatementParser state2;
 	state1.changeHeadValue("The sky is blue");
@@ -27,16 +41,7 @@ int main(int argc, char* argv[]) {
 	combined.print();
 	std::cout << std::endl;
 
-
-	std::cout<< "Testing" <<std::endl;
-
-	statementEvaluatorTest();
-
-	//Testing Cases
-
-	return 0;
 }
-
 
 void statementEvaluatorTest(){
 	std::cout << "RUNNING STATEMENTEVALUATORTEST\n\n";

@@ -25,7 +25,7 @@ bool StatementEvaluator::evaluateStatement(const StatementParser& s, const std::
  * Returns: Nothing
  */
 void StatementEvaluator::printTruthTable(const StatementParser& s, const std::vector<std::string>& variableNames) const{
-	int maxStringSize = 0;
+	unsigned int maxStringSize = 0;
 	std::vector<std::pair<std::string, bool> > variableTruthValues;
 	for(unsigned int i = 0; i < variableNames.size(); i++){
 		variableTruthValues.push_back(std::make_pair(variableNames[i], true));
