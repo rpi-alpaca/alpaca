@@ -16,10 +16,19 @@
 
 
 void statementEvaluatorTest();
+void statementParserTest();
 
 int main(int argc, char* argv[]) {
-	std::cout<< "Testing" <<std::endl;
+	std::cout << "Testing" << std::endl;
 
+	std::string stConstructor;
+	std::cout << "Input a statement of format (A) & (B): ";
+	std::getline(std::cin, stConstructor);
+
+	StatementParser testStatement(stConstructor);
+	testStatement.print();
+
+	statementParserTest();
 	statementEvaluatorTest();
 
 	return 0;
@@ -35,11 +44,10 @@ void statementParserTest(){
 	StatementParser combined(state1, state2);
 
 	state1.print();
-	std::cout << std::endl;
 	state2.print();
-	std::cout << std::endl;
 	combined.print();
-	std::cout << std::endl;
+
+
 
 }
 
