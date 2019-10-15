@@ -47,10 +47,11 @@ class AlpacaApp(App):
 if __name__ == "__main__":
 	config = configparser.ConfigParser()
 	config.read('../config.ini')
-	print(config.sections())
-	for key in config['DISPLAY']: print(key + " = " + config['DISPLAY'][key])
 	default = config['DEFAULT']
-	Window.size = (1280,720)
+
+    # Apply default settings to the root window before execution
+	Window.size = ( int(default['WindowSize_width']), int(default['WindowSize_height']) )
 	Window.minimum_width = default['Window_Minimum_width']
 	Window.minimum_height = default['Window_Minimum_height']
+
 	AlpacaApp().run()
