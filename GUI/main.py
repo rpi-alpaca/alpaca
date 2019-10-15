@@ -9,7 +9,7 @@ from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.uix.image import Image
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen, WipeTransition
 from kivy.core.window import Window
 
 # Screens defined in separate screen .py files
@@ -17,9 +17,7 @@ from helpscreen import HelpScreen
 from settings import SettingsScreen
 from menuscreen import MenuScreen
 
-Window.size = (1000, 700)
-Window.minimum_width = 1000
-Window.minimum_height = 700
+import configparser
 
 class NewProjectScreen(Screen):
 	pass
@@ -47,4 +45,12 @@ class AlpacaApp(App):
         return sm
 
 if __name__ == "__main__":
+	config = configparser.ConfigParser()
+	config.read('../config.ini')
+	print(config.sections())
+	for key in config['DISPLAY']: print(key + " = " + config['DISPLAY'][key])
+	default = config['DEFAULT']
+	Window.size = (1280,720)
+	Window.minimum_width = default['Window_Minimum_width']
+	Window.minimum_height = default['Window_Minimum_height']
 	AlpacaApp().run()
