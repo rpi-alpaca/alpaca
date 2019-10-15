@@ -17,7 +17,7 @@ class HelpPanels(TabbedPanel):
 # Main class for the help menu to build on top of
 class HelpScreen(Screen):
   def __init__(self, **kwargs):
-    super(HelpMenu, self).__init__(**kwargs)
+    super(HelpScreen, self).__init__(**kwargs)
 
     panels = HelpPanels()
     header = HelpPanelsHeader()

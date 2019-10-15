@@ -12,8 +12,10 @@ from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 
-# Screens defined in separate Screens.py
-from Screens import HelpScreen
+# Screens defined in separate screen .py files
+from helpscreen import HelpScreen
+from settings import SettingsScreen
+from menuscreen import MenuScreen
 
 Window.size = (1000, 700)
 Window.minimum_width = 1000
@@ -24,12 +26,6 @@ class NewProjectScreen(Screen):
 
 class ExistingProjectScreen(Screen):
     pass
-
-class MenuScreen(Screen):
-	pass
-
-class SettingsScreen(Screen):
-	pass
 
 # Loading Multiple .kv files
 Builder.load_file('alpaca.kv')
