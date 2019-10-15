@@ -1,6 +1,4 @@
 #include "statement.h"
-#include <string>
-#include <vector>
 
 Statement::Statement() {
 	input_statement = "Variable_def";
