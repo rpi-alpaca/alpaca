@@ -5,6 +5,7 @@
 
 #include <unordered_map>
 #include <utility>
+//Will string be needed?
 #include <string>
 
 class LogicGate{
@@ -22,9 +23,13 @@ private:
 
 /*
 
+	Idea: Have Nodes and operation
 
+	Operation orders can be changed -- likely via a tree?
 
-
+	Give each operator a code number?
+	
+	
 
 
 */
