@@ -10,32 +10,31 @@ from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
 from kivy.uix.button import Button
-from kivy.uix.button import Button
 from kivy.uix.scatterlayout import ScatterLayout
 
 class HelpScreen(Screen):
 	pass
 
-class NewProjectScreen(Screen):
-    def createNew(self):
-        self.submit = Button(text="Test", font_size = 40, size_hint = (0.25, 0.2))
-        self.submit.bind(on_release=self.createNew)
-        self.add_widget(self.submit)
-        return
+class BlockNewProjectScreen(Screen): # gui screen
+#	def __init__(self):
+#		pass
+
+#	def on_touch_down(self):
+#		pass
 
     def createNew(self):
         self.submit = Button(text="Test", font_size = 40, size_hint = (0.25, 0.2))
-        self.submit.bind(on_release=self.createNew)
         self.add_widget(self.submit)
         return
 
-
-class NewProjectBuilderScreen(Screen):
+class TextNewProjectScreen(Screen): # text base screen
     pass
-
+'''
 class aButton(Button):
-    pass
+	def on_touch_down(self, touch):
+		return False
 
+'''
 class ExistingProjectScreen(Screen):
     pass
 
@@ -46,18 +45,20 @@ class MenuScreen(Screen):
 Builder.load_file('alpaca.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
-Builder.load_file('newproject.kv')
+Builder.load_file('blocknewproject.kv')
+Builder.load_file('textnewproject.kv')
 
 class AlpacaApp(App):
-    def build(self):
+	def build(self):
         # Create the screen manager
-        sm = ScreenManager()
-        sm.add_widget(MenuScreen(name='Menu'))
-        sm.add_widget(HelpScreen(name='Help'))
-        sm.add_widget(NewProjectScreen(name='NewProject'))
-        sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
-        sm.current = 'NewProject'
-        return sm
+		sm = ScreenManager()
+		sm.add_widget(MenuScreen(name='Menu'))
+		sm.add_widget(HelpScreen(name='Help'))
+		sm.add_widget(BlockNewProjectScreen(name='BlockNewProject'))
+		sm.add_widget(TextNewProjectScreen(name='TextNewProject'))
+		sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
+		sm.current = 'BlockNewProject'
+		return sm
 
 if __name__ == "__main__":
 	Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
