@@ -11,16 +11,17 @@
                 BoxLayout:
                     orientation: "horizontal"
                     size_hint_x: .25
-
                     TabbedPanel:
-                        do_default_tab: False
+                        default_tab:  lolDoesntMatter
                         background_color: 1,1,1,1
                         TabbedPanelItem:
+                            id: DD_tab
                             text: "Drag&drop"
-                            on_press:
+                            on_release:
                                 root.manager.current = "BlockNewProject"
                         TabbedPanelItem:
                             text: "text"
+                            id:  lolDoesntMatter
                             Label:
                                 text: "Something here"
 
