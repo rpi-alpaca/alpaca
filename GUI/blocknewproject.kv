@@ -14,7 +14,7 @@
 
                     TabbedPanel:
                         id: panel
-                        default_tab: DD_tab
+                        default_tab: lolDoesntMatter
                         background_color: 1,1,1,1
                         TabbedPanelItem:
                             text: "Drag&drop"
@@ -28,7 +28,7 @@
                             on_release:
                                 root.manager.transition = NoTransition(duration=0)
                                 root.manager.current = "TextNewProject"
-                                panel.switch_to(panel.tab_list[1])
+                                panel.switch_to(panel.tab_list[1], True)
 
             BoxLayout:
                 orientation: "horizontal"
