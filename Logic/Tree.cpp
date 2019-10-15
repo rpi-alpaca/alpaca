@@ -72,7 +72,15 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 	}
 
 	//Evaluates the left
-	for (i = 0; i < statement.size(); i++) {
+	i = 0;
+	bool neg = false;
+	int start = 1;
+	if(statement[0] == '~'){
+		neg = true;
+		i=2;
+		start = 1;
+	}
+	for (; i < statement.size(); i++) {
 		if (statement[i] == '(')
 			parenCount++;
 		else if (statement[i] == ')')
@@ -81,19 +89,33 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 		if (parenCount == 0) {
 			
 			//subStatementL is the inner statement without parentheses
-			std::string subStatementL = statement.substr(1, i-1);
-
-			//Give subStatementL to left node for parsing
-			n->left = new StatementNode();
-			parseStatement(n->left, subStatementL);
-			break;
+			std::string subStatementL = statement.substr(start, i-1);
+			if(i == statement.size()-1){
+				if(neg){
+					n->negation = n->negation;
+				}
+				parseStatement(n, subStatementL);
+			}
+			else{
+				//Give subStatementL to left node for parsing
+				n->left = new StatementNode();
+				n->left->negation = neg;
+				parseStatement(n->left, subStatementL);
+				//Statement is compound, find the opType
+				n->opType = statement[i+2];
+	
+				//Create a node for the right statement
+				n->right = new StatementNode();
+				int rStart = i+5;
+				neg = false;
+				if(statement[i+3] == '~'){
+					neg = true;
+					rStart = i+6;
+				}
+				std::string subStatementR = statement.substr(rStart, statement.size()-(i+5)-1);
+				parseStatement(n->right, subStatementR);
+				break;
+			}
 		}
 	}
-	//Statement is compound, find the opType
-	n->opType = statement[i+2];
-	
-	//Create a node for the right statement
-	std::string subStatementR = statement.substr(i+5, statement.size()-(i+5)-1);
-	n->right = new StatementNode();
-	parseStatement(n->right, subStatementR);
 }
