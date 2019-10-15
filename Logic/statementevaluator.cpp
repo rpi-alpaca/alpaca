@@ -1,5 +1,4 @@
 
-#include "statement.h"
 #include "statementevaluator.h"
 
 /* evaluateStatement
@@ -45,9 +44,11 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 	if(p -> opType == 'v'){
 		return variableValues.find(p -> value) -> second;
 	} 
+	//Node is a not statement
 	else if(p -> opType == '~'){
 		return !evaluateBranch(p -> left, variableValues);
 	}
+	//Node is a non-not operation
 	else{
 		std::function<bool(bool,bool)> operation = functionMap.find(p -> opType) -> second;
 		return operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
@@ -73,6 +74,7 @@ void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<
 }
 
 
+//PRIVATE: Helper function that prints all strings in an array formatted using iomanip
 void StatementEvaluator::printVariableHeaders(const std::vector<std::string>& variableNames, int maxStringSize) const{
 	for(unsigned int i = 0; i < variableNames.size(); i++){
 		std::cout << std::setw(maxStringSize) << std::left << variableNames[i] << " ";
