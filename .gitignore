@@ -1,3 +1,4 @@
 # Gitpod and Docker Files
 .gitpod
 Dockerfile
+*.cpython

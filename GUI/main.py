@@ -12,15 +12,12 @@ from kivy.uix.image import Image
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 
+# Screens defined in separate Screens.py
+from Screens import HelpScreen
+
 Window.size = (1000, 700)
 Window.minimum_width = 1000
 Window.minimum_height = 700
-
-class HelpOptions(TabbedPanel):
-    pass
-
-class HelpScreen(Screen):
-    pass
 
 class NewProjectScreen(Screen):
 	pass
