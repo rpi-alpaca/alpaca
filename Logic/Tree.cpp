@@ -77,8 +77,8 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 	int start = 1;
 	if(statement[0] == '~'){
 		neg = true;
-		i=2;
-		start = 1;
+		i=1;
+		start = 2;
 	}
 	for (; i < statement.size(); i++) {
 		if (statement[i] == '(')
@@ -92,7 +92,7 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 			std::string subStatementL = statement.substr(start, i-1);
 			if(i == statement.size()-1){
 				if(neg){
-					n->negation = n->negation;
+					n->negation = !(n->negation);
 				}
 				parseStatement(n, subStatementL);
 			}
