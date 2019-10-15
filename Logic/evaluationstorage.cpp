@@ -29,13 +29,17 @@ int EvaluationStorage::evaluateStatement(const StatementParser& s, const std::ve
 
 /* addStatement
  * Requires: s is a valid StatementParser
- * Returns: A int indicating whether the statement evaluates to true or false (-1 - not present)
+ * Effects: StatementParser is tracked by class
  */
 void EvaluationStorage::addStatement(const StatementParser& s){
 
 }
 
 
+/* addEvaluation
+ * Requires: s is a valid StatementParser
+ * Effects: The evaluation given by truthValues is stored
+ */
 void EvaluationStorage::addEvaluation(const StatementParser& s, const std::vector<bool>& truthValues){
 
 }
