@@ -7,9 +7,6 @@
 */
 
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include "statementevaluator.h"
 #include "LogicGate.h"
 #include "Tree.h"

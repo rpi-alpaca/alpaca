@@ -10,6 +10,7 @@
 class LogicGate{
 public:
 	bool addStatement(char addState);
+	//Likely will not be doing much, more of prototype for GUI to use later
 	void asciiDraw();
 	bool changeOnOff(char stateName, bool newSwitch);
 
@@ -18,3 +19,12 @@ private:
 };
 
 #endif
+
+/*
+
+
+
+
+
+
+*/
