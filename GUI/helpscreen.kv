@@ -1,36 +1,33 @@
 #:kivy 1.11.1
 
 <HelpScreen>:
-    FloatLayout:
-        BoxLayout:
-            orientation: "vertical"
-            font_name: 'Roboto-Bold.ttf'
+    BoxLayout:
+        orientation: "vertical"
+        font_name: 'Roboto-Bold.ttf'
 
-            HelpPanels:
+        # HelpPanels:
 
-            BoxLayout:
-                size_hint_y: 0.1
-                padding: 10
-                spacing: 10
+        # NavigationBar:
 
-                canvas.before:
-                    Color: 
-                        rgba: 0.7,0.7,0.7,1
-                    Rectangle:
-                        size: root.width, root.height/11
 
-                Button:
-                    text: 'Back to Menu'
-                    font_name: 'Roboto-Bold.ttf'
-                    font_size: 42
 
-                    on_press:
-                        root.manager.transition.direction = 'up'
-                        root.manager.current = 'Menu'
+<NavigationBar>:
+    size_hint_y: 0.1
+    padding: 10
+    spacing: 10
+
+    canvas.before:
+        Color:
+            rgba: 0.7, 0.7, 0.7, 1
+		Rectangle:
+            pos: self.center
+            size: self.width, self.height/11
+
 
 <HelpPanels>:
     do_default_tab: False
     tab_width: self.size[0]/len(self.tab_list)
+    size_hint_y: .9
     
     TabbedPanelStrip:
         background_color: (0, 0, 1, .5)    # 50% translucent blue
