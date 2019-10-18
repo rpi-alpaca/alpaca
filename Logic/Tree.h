@@ -12,7 +12,7 @@ public:
 	StatementNode* right;
 	std::string value;
 	char connector;
-	bool negation;
+	bool negation = false;
 	char opType;
 };
 
