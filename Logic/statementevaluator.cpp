@@ -57,6 +57,34 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 }
 
 
+//PRIVATE: Helper function for evaluateStatement
+/*bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
+	bool notDetected = false;
+	//Node is a not statement
+	if(p -> opType == '~'){
+		notDetected = true;
+	}
+
+	//Node is not an operation (variable)
+	if(p -> opType == 'v' && !notDetected){
+		return variableValues.find(p -> value) -> second;
+	}
+	else if(p -> opType == 'v' && notDetected){
+		return !variableValues.find(p -> value) -> second;
+	}
+	//Node is a non-not operation
+	else if(!notDetected){
+		std::function<bool(bool,bool)> operation = functionMap.find(p -> opType) -> second;
+		return operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
+	}
+	else{
+		std::function<bool(bool,bool)> operation = functionMap.find(p -> opType) -> second;
+		return !operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
+	}
+	return true;
+}*/
+
+
 //PRIVATE: Helper function for printTruthTable
 void StatementEvaluator::recurseDownArray(const StatementParser& s, std::vector<std::pair<std::string, bool> >& variableTruthValues, unsigned int index, unsigned int maxStringSize) const{
 	if(index == variableTruthValues.size()){
