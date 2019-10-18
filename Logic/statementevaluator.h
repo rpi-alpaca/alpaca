@@ -3,6 +3,7 @@
 #define _STATEMENT_EVALUATOR_H_
 
 #include "Tree.h"
+#include "evaluationstorage.h"
 #include <functional>
 #include <unordered_map>
 #include <vector>
@@ -12,6 +13,7 @@ class StatementEvaluator{
 	public:
 		bool evaluateStatement(const StatementParser& s, const std::vector<std::pair<std::string, bool> >& variableTruthValues) const;
 		void printTruthTable(const StatementParser& s, const std::vector<std::string>& variableNames) const;
+		bool areLogicallyEquivalent(const StatementParser& s1, const StatementParser& s2) const;
 
 	private:
 		//Mapping of operation characters to the corresponding functions.

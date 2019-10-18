@@ -38,8 +38,18 @@ void StatementEvaluator::printTruthTable(const StatementParser& s, const std::ve
 }
 
 
+/* areLogicallyEquivalent
+ * Requires: s1, s2 are non-null
+ * Effects: Nothing
+ * Returns: True if s1, s2 are logically equivalent. Otherwise, false.
+ */
+bool StatementEvaluator::areLogicallyEquivalent(const StatementParser& s1, const StatementParser& s2) const{
+	
+}
+
+
 //PRIVATE: Helper function for evaluateStatement
-bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
+/*bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
 	//Node is not an operation (variable)
 	if(p -> opType == 'v'){
 		return variableValues.find(p -> value) -> second;
@@ -54,11 +64,11 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 		return operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
 	}
 	return true;
-}
+}*/
 
 
 //PRIVATE: Helper function for evaluateStatement
-/*bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
+bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
 	bool notDetected = false;
 	//Node is a not statement
 	if(p -> opType == '~'){
@@ -72,7 +82,7 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 	else if(p -> opType == 'v' && notDetected){
 		return !variableValues.find(p -> value) -> second;
 	}
-	//Node is a non-not operation
+	//Node is an operation
 	else if(!notDetected){
 		std::function<bool(bool,bool)> operation = functionMap.find(p -> opType) -> second;
 		return operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
@@ -82,7 +92,7 @@ bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_m
 		return !operation(evaluateBranch(p -> left, variableValues), evaluateBranch(p-> right, variableValues));
 	}
 	return true;
-}*/
+}
 
 
 //PRIVATE: Helper function for printTruthTable
