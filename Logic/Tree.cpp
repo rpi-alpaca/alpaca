@@ -43,8 +43,8 @@ void StatementParser::printNode(StatementNode* s) const {
 	else {
 		std::cout << '(';
 		printNode(s->left);
-		std::cout << ") ";
-		std::cout << s->opType << " (";
+		std::cout << " ";
+		std::cout << s->opType << " ";
 		printNode(s->right);
 		std::cout << ")";
 	}

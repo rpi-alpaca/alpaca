@@ -3,6 +3,8 @@
 #define _EVALUATION_STORAGE_H_
 
 #include "statementevaluator.h"
+#include <vector>
+#include <unordered_map>
 
 //The EvaluationStorage class stores Statements with evaluations that have already 
 //been computed for fast access/to avoid frequent computation.
