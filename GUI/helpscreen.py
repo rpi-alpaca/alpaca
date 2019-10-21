@@ -11,7 +11,6 @@ from kivy.uix.button import Button
 from kivy.graphics import Rectangle, Color
 
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
 
 Builder.load_file('helpscreen.kv')
 
