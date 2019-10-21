@@ -8,59 +8,29 @@
             size: root.size
             pos: root.pos
 
-    BoxLayout:
-        orientation: 'vertical'
+<LogoBody>:
+    size_hint_y: 0.9
+    spacing: 2
+    orientation: 'horizontal'
 
-        BoxLayout:
-            spacing: 2
-            orientation: 'horizontal'
-            Image:
-                source: '../Media/AlpacaLogoProto2.png'
+<AlpacaLogo>:
+    source: '../Media/AlpacaLogoProto2.png'
 
-            Button:
-                size_hint_x: 0.1
-                size_hint_y: 0.13
-                background_normal: '../Media/Icons/help-icon.png'
+<NavigationButton>:
+    font_name: 'Roboto-Bold.ttf'
+    font_size: 42
 
-                on_press:
-                    root.manager.transition.direction = 'down'
-                    root.manager.current = 'Help'
+<HelpButton>:
+    size_hint_y: 0.13
+    size_hint_x: 0.09
+    background_normal: "../Media/Icons/help-icon.png"
 
-        BoxLayout:
-            size_hint_y: 0.1
-            padding: 10
-            spacing: 10
+<NavigationBar>:
+    padding: 10
+    spacing: 10
 
-            canvas.before:
-                Color: 
-                    rgba: 0.7,0.7,0.7,1
-                Rectangle:
-                    size: root.width, root.height/11
-
-            Button:
-                text: 'Settings'
-                font_name: 'Roboto-Bold.ttf'
-                font_size: 42
-
-                on_press:
-                    root.manager.transition.direction = 'right'
-                    root.manager.current = 'Settings'
-
-            Button:
-                text: 'New Project'
-                font_name: 'Roboto-Bold.ttf'
-                font_size: 42
-
-                on_press:
-                    root.manager.transition.direction = 'up'
-                    root.manager.current = 'NewProject'
-            Button:
-                text: 'Existing Project'
-                font_name: 'Roboto-Bold.ttf'
-                font_size: 42
-
-                on_press:
-                    root.manager.transition.direction = 'left'
-                    root.manager.current = 'ExistingProject'
-    
-    
+    canvas.before:
+        Color: 
+            rgba: 0.7,0.7,0.7,1
+        Rectangle:
+            size: root.size

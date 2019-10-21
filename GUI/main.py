@@ -26,7 +26,6 @@ class ExistingProjectScreen(Screen):
     pass
 
 # Loading Multiple .kv files
-Builder.load_file('alpaca.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('newproject.kv')
 Builder.load_file('settings.kv')
