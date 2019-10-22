@@ -1,0 +1,42 @@
+{
+    "English":
+    {
+        "What":
+        {
+            "Title": "What is ALPACA?",
+            "Body": "ALPACA is the (A)utomated (L)ogic (P)rocessor (A)nd (C)reation (E)ngine."
+        },
+        "How":
+        {   
+            "Title": "How do you use ALPACA?",
+            "Body": "You have two options for how to use ALPACA, either the text-based interface or the drag and drop interface.",
+            "Command Line": "I'm based on text!",
+            "DragNDrop": "I'm based on the GUI!"
+        },
+        "Who":
+        {
+            "Title": "Who made ALPACA?",
+            "Body": "ALPACA is a project created and maintained by RPI Students for the RCOS."
+        }
+    },
+    "Pirate":
+    {
+        "What":
+        {
+            "Title": "Wha' be ALPACA?",
+            "Body": "ALPACA be th' (A)utomated (L)ogic (P)rocessor (A)nd (C)reation (E)ngine."
+        },
+        "How":
+        {   
+            "Title": "How do ye use ALPACA?",
+            "Body": "Yer options for use be two: either the cursed text-based command line, or the infamous drag-n-drop.",
+            "Command Line": "I be based on text!",
+            "DragNDrop": "I be based on th' GUI!"
+        },
+        "Who":
+        {
+            "Title": "ALPACA be made by who?",
+            "Body": "ALPACA be a project created 'n maintained by RPI Students fer th' RCOS."
+        }
+    }
+}
