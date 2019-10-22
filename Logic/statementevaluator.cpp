@@ -70,7 +70,7 @@ bool StatementEvaluator::areLogicallyEquivalent(const StatementParser& s1, const
 bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
 	bool notDetected = true;
 	//Node is a not statement
-	if(p -> negation == '~'){
+	if(p -> negation == false){
 		notDetected = false;
 	}
 
