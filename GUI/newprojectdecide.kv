@@ -1,0 +1,13 @@
+#:kivy 1.11.1
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<DecideProjectScreen>:
+    BoxLayout:
+        Button:
+            text: "Click Here to use Blocks"
+            on_release:  root.manager.current = "BlockNewProject"
+        Button:
+            text: "Click Here to use the Text Editor"
+            on_release:  root.manager.current = "TextNewProject"
+            
+            

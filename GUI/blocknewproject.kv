@@ -12,23 +12,23 @@
                     orientation: "horizontal"
                     size_hint_x: .25
 
-                    TabbedPanel:
-                        id: panel
-                        default_tab: lolDoesntMatter
-                        background_color: 1,1,1,1
-                        TabbedPanelItem:
-                            text: "Drag&drop"
-                            id: DD_tab
-                            on_press:
-                            Label:
-                                text: "Content of First Panel"
-                        TabbedPanelItem:
-                            text: "text"
-                            id:  lolDoesntMatter
-                            on_release:
-                                root.manager.transition = NoTransition(duration=0)
-                                root.manager.current = "TextNewProject"
-                                panel.switch_to(panel.tab_list[1], True)
+##                    TabbedPanel:
+##                        id: panel
+##                        default_tab: lolDoesntMatter
+##                        background_color: 1,1,1,1
+##                        TabbedPanelItem:
+##                            text: "Drag&drop"
+##                            id: DD_tab
+##                            on_press:
+##                            Label:
+##                                text: "Content of First Panel"
+##                        TabbedPanelItem:
+##                            text: "text"
+##                            id:  lolDoesntMatter
+##                            on_release:
+##                                root.manager.transition = NoTransition(duration=0)
+##                                root.manager.current = "TextNewProject"
+##                                panel.switch_to(panel.tab_list[1], True)
 
             BoxLayout:
                 orientation: "horizontal"

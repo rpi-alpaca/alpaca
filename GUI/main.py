@@ -39,6 +39,9 @@ class aButton(Button):
 class ExistingProjectScreen(Screen):
     pass
 
+class DecideProjectScreen(Screen):
+        pass
+
 class MenuScreen(Screen):
 	pass
 
@@ -48,6 +51,7 @@ Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
 Builder.load_file('blocknewproject.kv')
 Builder.load_file('textnewproject.kv')
+Builder.load_file('newprojectdecide.kv')
 
 class AlpacaApp(App):
 	def build(self):
@@ -58,7 +62,8 @@ class AlpacaApp(App):
 		sm.add_widget(BlockNewProjectScreen(name='BlockNewProject'))
 		sm.add_widget(TextNewProjectScreen(name='TextNewProject'))
 		sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
-		sm.current = 'BlockNewProject'
+		sm.add_widget(DecideProjectScreen(name='ProjectDecide'))
+		sm.current = 'ProjectDecide'
 		return sm
 
 if __name__ == "__main__":
