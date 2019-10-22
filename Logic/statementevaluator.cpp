@@ -44,9 +44,8 @@ void StatementEvaluator::printTruthTable(const StatementParser& s, const std::ve
  * Returns: True if s1, s2 are logically equivalent. Otherwise, false.
  */
 bool StatementEvaluator::areLogicallyEquivalent(const StatementParser& s1, const StatementParser& s2) const{
-	
-}
 
+}
 
 //PRIVATE: Helper function for evaluateStatement
 /*bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
@@ -69,10 +68,10 @@ bool StatementEvaluator::areLogicallyEquivalent(const StatementParser& s1, const
 
 //PRIVATE: Helper function for evaluateStatement
 bool StatementEvaluator::evaluateBranch(StatementNode* p, const std::unordered_map<std::string, bool>& variableValues) const{
-	bool notDetected = false;
+	bool notDetected = true;
 	//Node is a not statement
-	if(p -> opType == '~'){
-		notDetected = true;
+	if(p -> negation == '~'){
+		notDetected = false;
 	}
 
 	//Node is not an operation (variable)
