@@ -28,12 +28,11 @@ class ExistingProjectScreen(Screen):
 # Loading Multiple .kv files
 Builder.load_file('existingproject.kv')
 Builder.load_file('newproject.kv')
-Builder.load_file('settings.kv')
 
 class AlpacaApp(App):
     def build(self):
         # Create the screen manager
-        sm = ScreenManager()    
+        sm = ScreenManager()
         sm.add_widget(MenuScreen(name='Menu'))
         sm.add_widget(HelpScreen(name='Help'))
         sm.add_widget(SettingsScreen(name='Settings'))

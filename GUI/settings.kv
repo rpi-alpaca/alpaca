@@ -1,46 +1,37 @@
 #:kivy 1.11.1
 
 <SettingsScreen>:
-    FloatLayout:
-        BoxLayout:
-            orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 0.9
+        orientation: "vertical"
 
-            GridLayout:
-                size_hint_y: 0.95
-                rows: 8
-                cols: 1
+<NavigationBar>
+    size_hint_y: 0.1
+    padding: 10
+    spacing: 10
 
-                canvas:
-                    Rectangle:
-                        Color: 
-                            rgba: 1,1,0,1
+    canvas.before:
+        Color:
+            rgba: 0.7,0.7,0.7,1
+        Rectangle:
+            size: root.size
 
-                Label:
-                    text: "Slider"
+<Slider>
+    size_hint_y: 0.9
+    rows: 8
+    cols: 1
 
-                Slider:
-                    id: slider
-                    min: 10
-                    max: 64
-                    step: 2
-                    orientation: 'horizontal'
+    canvas:
+        Rectangle:
+            Color:
+                rgba: 1,1,0,1
 
-            BoxLayout:
-                size_hint_y: 0.1
-                padding: 10
-                spacing: 10
+            Label:
+                text: "Slider"
 
-                canvas.before:
-                    Color: 
-                        rgba: 0.7,0.7,0.7,1
-                    Rectangle:
-                        size: root.width, root.height/11
-
-                Button:
-                    text: 'Back to Menu'
-                    font_name: 'Roboto-Bold.ttf'
-                    font_size: 42
-
-                    on_press:
-                        root.manager.transition.direction = 'left'
-                        root.manager.current = 'Menu'
+            Slider:
+                id: slider
+                min: 10
+                max: 64
+                step: 2
+                orientation: 'horizontal'
