@@ -90,6 +90,7 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 		return;
 	}
 
+	std::string subStatementL = "";
 	//Evaluates the left
 	for (i = 0; i < statement.size(); i++) {
 		if (statement[i] == '(')
@@ -100,19 +101,41 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 		if (parenCount == 0) {
 
 			//subStatementL is the inner statement without parentheses
-			std::string subStatementL = statement.substr(1, i-1);
-
-			//Give subStatementL to left node for parsing
-			n->left = new StatementNode();
-			parseStatement(n->left, subStatementL);
+			subStatementL = statement.substr(1, i-1);
 			break;
 		}
 	}
+
 	//Statement is compound, find the opType
 	n->opType = statement[i+2];
 
-	//Create a node for the right statement
+	//subStatementR is the inner statement without parentheses after the operation
 	std::string subStatementR = statement.substr(i+5, statement.size()-(i+5)-1);
+
+	//Give subStatementL to left node for parsing
+	n->left = new StatementNode();
+
+	//Create a node for the right statement
 	n->right = new StatementNode();
+
+	//Changes conditional A -> B to ~A | B
+	if(n->opType == '>'){
+		n->left->negation = !(n->left->negation);
+		n->opType = '|';
+	}
+	if(n->opType == '='){
+		std::string newLeft = "(" + subStatementL + ") & (" + subStatementR + ")";
+		std::string newRight = "(~(" + subStatementL + ")) & (~(" + subStatementR + "))";
+		n->opType = '|';
+		subStatementL = newLeft;
+		subStatementR = newRight;  
+		std::cout<< "hello" <<std::endl;
+	}
+
+	parseStatement(n->left, subStatementL);
 	parseStatement(n->right, subStatementR);
 } 
+
+// std::string conditional(std::string A, std::string B){
+// 	return "(" + B + ") | (~(" + A + "))";
+// }
