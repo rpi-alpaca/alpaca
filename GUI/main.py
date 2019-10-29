@@ -17,11 +17,6 @@ class HelpScreen(Screen):
 	pass
 
 class BlockNewProjectScreen(Screen): # gui screen
-#	def __init__(self):
-#		pass
-
-#	def on_touch_down(self):
-#		pass
 
     def createNew(self):
         self.submit = Button(text="Test", font_size = 40, size_hint = (0.25, 0.2))
@@ -29,7 +24,9 @@ class BlockNewProjectScreen(Screen): # gui screen
         return
 
 class TextNewProjectScreen(Screen): # text base screen
-    pass
+
+	def parse(self, ):
+		pass
 '''
 class aButton(Button):
 	def on_touch_down(self, touch):
