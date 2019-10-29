@@ -19,14 +19,11 @@ from kivy.lang import Builder
 import configparser
 
 Builder.load_file('settings.kv')
+possible_lang = ["Pirate", "English", "Spanish", "French"]
 
 class NavigationBar(BoxLayout):
     pass
 
-# class SettingsHeader(TabbedPanelHeader):
-#     def __init__(self, **kwargs):
-#         super(TabbedPanelHeader, self).__init__(**kwars)
-#         self.background_color = []
 
 
 class SettingsScreen(Screen):
@@ -34,20 +31,15 @@ class SettingsScreen(Screen):
         self.manager.transition.direction = 'left'
         self.manager.current = 'Menu'
 
-    def PirateModeOn(self, instance):
+    def changeLanguage(self, language):
+        print(language)
         config = configparser.ConfigParser()
         config.read('../config.ini')
-        config.set('DISPLAY', 'language', 'Pirate')
+        config.set('DISPLAY', 'language', language)
 
         with open('../config.ini', 'w') as configfile:
             config.write(configfile)
 
-    def PirateModeOff(self, instance):
-        config = configparser.ConfigParser()
-        config.read('../config.ini')
-        config.set('DISPLAY', 'language', 'English')
-        with open('../config.ini', 'w') as configfile:
-            config.write(configfile)
 
     def __init__(self, **kwargs):
 
@@ -58,18 +50,22 @@ class SettingsScreen(Screen):
         navBar = NavigationBar()
         slide = Slider(min=-100, max=100, value=25)
         returnBtn = Button(text = "Return to Home")
-        changePirate = Button(text = "Turn on PirateMode")
-        changePirateOff = Button(text = "Turn off PirateMode")
-
         returnBtn.bind(on_press=self.returnHome)
-        changePirate.bind(on_press=self.PirateModeOn)
-        changePirateOff.bind(on_press=self.PirateModeOff)
+
+
+        languages = DropDown()
+        for index in range(len(possible_lang)):
+            btn = Button(text = possible_lang[index], size_hint_y=None, height=22)
+            btn.bind(on_release=lambda btn: languages.select(btn.text))
+            btn.bind(on_press=lambda btn: self.changeLanguage(btn.text))
+            languages.add_widget(btn)
+        mainbutton = Button(text='Hello', size_hint=(None, None))
+        mainbutton.bind(on_release=languages.open)
+        languages.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
 
         navBar.add_widget(returnBtn)
-        navBar.add_widget(changePirate)
-        navBar.add_widget(changePirateOff)
+        navBar.add_widget(mainbutton)
 
         setting_layout.add_widget(slide)
-        # setting_layout.add_widget(mainbutton)
         setting_layout.add_widget(navBar)
         self.add_widget(setting_layout)
