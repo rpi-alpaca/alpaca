@@ -37,17 +37,17 @@ class SettingsScreen(Screen):
     def PirateModeOn(self, instance):
         config = configparser.ConfigParser()
         config.read('../config.ini')
-        config.set('DISPLAY', 'piratemode', 'True')
+        config.set('DISPLAY', 'language', 'Pirate')
 
-        # with open('../config.ini', 'w') as configfile:
-        #     config.write(configfile)
+        with open('../config.ini', 'w') as configfile:
+            config.write(configfile)
 
     def PirateModeOff(self, instance):
         config = configparser.ConfigParser()
         config.read('../config.ini')
-        config.set('DISPLAY', 'piratemode', 'False')
-        # with open('../config.ini', 'w') as configfile:
-        #     config.write(configfile)
+        config.set('DISPLAY', 'language', 'English')
+        with open('../config.ini', 'w') as configfile:
+            config.write(configfile)
 
     def __init__(self, **kwargs):
 
