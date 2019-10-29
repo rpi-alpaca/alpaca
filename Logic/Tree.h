@@ -29,6 +29,8 @@ public:
 	
 	void print() const;
 	void printNode(StatementNode* s) const;
+	void printTree() const;
+	void printTreeHelper(StatementNode* s, int depth) const;
 
 private:
 	StatementNode* copy_statement(StatementNode* old_node);

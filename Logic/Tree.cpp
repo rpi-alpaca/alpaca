@@ -50,6 +50,23 @@ void StatementParser::printNode(StatementNode* s) const {
 	}
 }
 
+//Print the tree as its structure
+void StatementParser::printTree() const {
+	printTreeHelper(head, 0);
+}
+
+//Helper function for tree print
+void StatementParser::printTreeHelper(StatementNode* s, int depth) const {
+	if (!s)
+		return;
+	printTreeHelper(s->right, depth+1);
+	std::cout << std::string(depth, '\t') << s->opType;
+	if (s->opType == 'v')
+		std::cout << ": " << (s->negation ? '~' : ' ') << s->value;
+	std::cout << std::endl;
+	printTreeHelper(s->left, depth+1);
+}
+
 //Copy helper function for copying nodes
 StatementNode* StatementParser::copy_statement(StatementNode* old_node) {
 	if (old_node == nullptr)
@@ -128,8 +145,7 @@ void StatementParser::parseStatement(StatementNode* n, const std::string& statem
 		std::string newRight = "(~(" + subStatementL + ")) & (~(" + subStatementR + "))";
 		n->opType = '|';
 		subStatementL = newLeft;
-		subStatementR = newRight;  
-		std::cout<< "hello" <<std::endl;
+		subStatementR = newRight;
 	}
 
 	parseStatement(n->left, subStatementL);

@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
 
 	StatementParser testStatement(stConstructor);
 	testStatement.print();
+	testStatement.printTree();
 
 	statementParserTest();
 	statementEvaluatorTest();
