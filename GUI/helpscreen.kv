@@ -2,12 +2,13 @@
 
 <HelpScreen>:
     BoxLayout:
+        name: "HelpScreen"
         orientation: "vertical"
         font_name: 'Roboto-Bold.ttf'
 
 
-
 <NavigationBar>:
+    name: "NavBar"
     size_hint_y: 0.1
     padding: 10
     spacing: 10
@@ -18,23 +19,9 @@
 		Rectangle:
             pos: self.center
             size: self.width, self.height/11
-
-# <HelpPanelTab>:
-#     TabbedPanelItem:
-#         id: WhatPanel
-#         name: "WhatPanel"
-#         text: "What is ALPACA?"
-
-#         BoxLayout:
-#             orientation: "vertical"
-#             Label:
-#                 font_size: 42
-#                 text: "What is ALPACA?"
-#             Label:
-#                 font_size: 32
-#                 text: "ALPACA is an (A)utomated (L)ogic (P)rocessor (A)nd Creation (A)pplication!\nThis program was created to help students design and learn formal logic.\nIt allows for designing and solving formal logic statements through either a text-based or drag and drop based interface."
-
+        
 <HelpPanels>:
+    name: "HelpPanels"
     do_default_tab: False
     size_hint_y: .9
     tab_width: root.width / 3
@@ -43,3 +30,4 @@
         background_color: (0, 0, 1, .5)    # 50% translucent blue
         border: [0, 0, 0, 0]
         background_image: ''
+    

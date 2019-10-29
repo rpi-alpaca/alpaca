@@ -29,6 +29,7 @@ class NavigationBar(BoxLayout):
 
 def createInfoTab(stringDict, tabName):
 	tab = TabbedPanelItem()
+	tab.name = tabName
 	tab.text = stringDict[tabName]["Title"]
 
 	titleText = Label(text=stringDict[tabName]["Title"])
@@ -41,6 +42,7 @@ def createInfoTab(stringDict, tabName):
 
 def createHelpPanels(language):
 	infoPanels = HelpPanels()
+	infoPanels.name = "infoPanel"
 
 	helpStrings = json.load( open("HelpStrings.json") )
 
@@ -49,6 +51,7 @@ def createHelpPanels(language):
 	tabsToAdd.append( createInfoTab(helpStrings[language], "How")  ) 
 	tabsToAdd.append( createInfoTab(helpStrings[language], "Who")  )
 
+	# Add in each new tab to the main panels
 	for tab in tabsToAdd:
 		infoPanels.add_widget(tab)
 
@@ -62,6 +65,7 @@ class HelpScreen(Screen):
 		config.read("../config.ini")
 
 		layout = StackLayout()
+		layout.name = "Layout"
 
 		infoPanels = createHelpPanels(config["DISPLAY"]["language"])
 
@@ -73,6 +77,18 @@ class HelpScreen(Screen):
 		layout.add_widget(infoPanels)
 		layout.add_widget(navBar)
 		self.add_widget(layout)
+
+		self.updateLangauge("Pirate")
+
+	def updateLangauge(self, language):
+		helpStrings = json.load( open("HelpStrings.json") )
+		stringsOfLanguage = helpStrings[language]
+
+		# Magic numbers get the layout of the screen, then the tabbed panel object,
+		#	then the tabs within it.
+		for tab in (self.children[0].children[1].tab_list):
+			tab.text = stringsOfLanguage[tab.name]["Title"]
+			tab.content.text = stringsOfLanguage[tab.name]["Body"]
 
 	def returnHome(self, instance):
 		self.manager.transition.direction = 'up'
