@@ -55,3 +55,7 @@ bool LogicGate::containsState(char checkState){
 
 	return true;
 }
+
+bool LogicGate::addOperator(char stateOne, char stateTwo, char opAdd){
+	return false;
+}

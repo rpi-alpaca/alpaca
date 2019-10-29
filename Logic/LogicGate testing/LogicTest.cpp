@@ -53,7 +53,10 @@ int main(){
 			continue;
 		}
 
-		if(operationDo == -0) break;
+		if(operationDo == -0){
+			std::cout << "Goodbye!" << std::endl;
+			break;
+		} 
 
 		else if(operationDo == 1){
 			std::cout << "Type a statement to add" << std::endl;

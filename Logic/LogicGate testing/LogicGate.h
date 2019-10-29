@@ -18,9 +18,12 @@ public:
 	bool changeOnOff(char stateName, bool newSwitch);
 	void clearStates();
 	bool containsState(char checkState);
+	//Adding operators
+	bool addOperator(char stateOne, char stateTwo, char opAdd);
 
 private:
 	std::unordered_map<char, bool> initStatements;
+	//std::map<>
 };
 
 #endif
