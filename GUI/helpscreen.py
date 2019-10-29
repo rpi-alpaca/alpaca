@@ -39,13 +39,8 @@ def createInfoTab(stringDict, tabName):
 
 	return tab
 
-def createHelpPanels(pirate):
+def createHelpPanels(language):
 	infoPanels = HelpPanels()
-
-	if pirate == True:
-		language = "Pirate"
-	else:
-		language = "English"
 
 	helpStrings = json.load( open("HelpStrings.json") )
 
@@ -68,7 +63,7 @@ class HelpScreen(Screen):
 
 		layout = StackLayout()
 
-		infoPanels = createHelpPanels(config["DISPLAY"]["lightmode"])
+		infoPanels = createHelpPanels(config["DISPLAY"]["language"])
 
 		navBar = NavigationBar()
 		returnButton = Button(text="Return to home")
