@@ -60,7 +60,7 @@ void StatementParser::printTreeHelper(StatementNode* s, int depth) const {
 	if (!s)
 		return;
 	printTreeHelper(s->right, depth+1);
-	std::cout << std::string(depth, '\t') << s->opType;
+	std::cout << std::string(depth, '\t') << (s->negation ? '~' : ' ') << s->opType;
 	if (s->opType == 'v')
 		std::cout << ": " << (s->negation ? '~' : ' ') << s->value;
 	std::cout << std::endl;
