@@ -25,8 +25,8 @@ class BlockNewProjectScreen(Screen): # gui screen
 
 class TextNewProjectScreen(Screen): # text base screen
 
-	def parse(self, ):
-		pass
+	def parse(self, string):
+		print(string)
 '''
 class aButton(Button):
 	def on_touch_down(self, touch):
