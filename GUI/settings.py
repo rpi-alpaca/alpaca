@@ -17,9 +17,15 @@ from kivy.graphics import Rectangle, Color
 
 from kivy.lang import Builder
 import configparser
+import json
 
 Builder.load_file('settings.kv')
 possible_lang = sorted(["Pirate", "English", "Spanish", "French"])
+
+class NavigationButton(Button):
+    def __init__(self, name, **kwargs):
+        super().__init__()
+        self.name = name
 
 class NavigationBar(BoxLayout):
     pass
@@ -38,18 +44,9 @@ class SettingsScreen(Screen):
             languages.add_widget(btn)
         return languages
 
-    def updateDropdown(self, to_replace, replacement):
-        #Looping through each button to find the correct one to update
-        for button in self.languages.children[0].children:
-            if button.text == to_replace:
-                button.text = replacement
-
     def changeLanguage(self, language):
         old_lang = self.config["DISPLAY"]["language"]
         self.config.set('DISPLAY', 'language', language)
-
-        self.updateDropdown(language, old_lang)
-        self.mainbutton.text = old_lang
         
         # Code to add later: allows choosing if default gets updated
         # choice = input(f"Would you like to save {language} as your default language? (y/n)")
@@ -65,21 +62,31 @@ class SettingsScreen(Screen):
 
         setting_layout = StackLayout()
 
-        navBar = NavigationBar()
+        self.navBar = NavigationBar()
         slide = Slider(min=-100, max=100, value=25)
-        returnBtn = Button(text = "Return to Home")
+        returnBtn = NavigationButton(name="Return", text = "Return to Home")
         returnBtn.bind(on_press=self.returnHome)
 
-        possible_lang.remove(self.config["DISPLAY"]["language"])
         self.languages = self.buildDropdown(possible_lang)
 
         self.mainbutton = Button(text=self.config["DISPLAY"]["language"], size_hint=(None, None))
         self.mainbutton.bind(on_release=self.languages.open)
         self.languages.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
 
-        navBar.add_widget(returnBtn)
-        navBar.add_widget(self.mainbutton)
+        self.navBar.add_widget(returnBtn)
+        self.navBar.add_widget(self.mainbutton)
 
         setting_layout.add_widget(slide)
-        setting_layout.add_widget(navBar)
+        setting_layout.add_widget(self.navBar)
         self.add_widget(setting_layout)
+
+    def on_pre_enter(self):
+        self.updateScreenLanguage(self.config["DISPLAY"]["language"])
+
+    def updateScreenLanguage(self, language):
+        navStrings = json.load( open("LangStrings.json") )
+        langNavStrings = navStrings[language]["navButton"]
+
+        for button in self.navBar.children:
+            if isinstance(button, NavigationButton) and button.name in langNavStrings.keys():
+                button.text = langNavStrings[button.name]

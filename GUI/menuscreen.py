@@ -9,6 +9,8 @@ from kivy.uix.stacklayout import StackLayout
 
 from kivy.lang import Builder
 
+import json
+
 Builder.load_file('alpaca.kv')
 
 class LogoBody(BoxLayout):
@@ -21,7 +23,9 @@ class HelpButton(Button):
     pass
 
 class NavigationButton(Button):
-    pass
+    def __init__(self, name, **kwargs):
+        super().__init__()
+        self.name = name
 
 class NavigationBar(BoxLayout):
     pass   
@@ -34,7 +38,7 @@ class MenuScreen(Screen):
 
         layout = StackLayout()
         body = LogoBody()
-        navBar = NavigationBar()
+        self.navBar = NavigationBar()
     
         logo = AlpacaLogo()
 
@@ -42,13 +46,17 @@ class MenuScreen(Screen):
         helpBtn = HelpButton()
         helpBtn.bind(on_release=self.toHelp)
 
-        settingsBtn = NavigationButton(text="Settings")
+        textStrings = json.load( open("LangStrings.json") )
+        englishStrings = textStrings[self.config["DISPLAY"]["language"]]
+        navText = englishStrings["navButton"]
+
+        settingsBtn = NavigationButton(name="Settings", text=navText["Settings"])
         settingsBtn.bind(on_release=self.toSettings)
 
-        newProjectBtn = NavigationButton(text="New Project")
+        newProjectBtn = NavigationButton(name="NewProj", text=navText["NewProj"])
         newProjectBtn.bind(on_release=self.toNewProject)
 
-        existingProjectBtn = NavigationButton(text="Exisiting Project")
+        existingProjectBtn = NavigationButton(name="ExistProj", text=navText["ExistProj"])
         existingProjectBtn.bind(on_release=self.toExistingProject)
         
         # Add help button to body
@@ -56,14 +64,27 @@ class MenuScreen(Screen):
         body.add_widget(helpBtn)
 
         # Add navigation buttons to navigation bar
-        navBar.add_widget(settingsBtn)
-        navBar.add_widget(newProjectBtn)
-        navBar.add_widget(existingProjectBtn)
+        self.navBar.add_widget(settingsBtn)
+        self.navBar.add_widget(newProjectBtn)
+        self.navBar.add_widget(existingProjectBtn)
 
         # Finally, add all elements to the screen
         layout.add_widget(body)
-        layout.add_widget(navBar)
+        layout.add_widget(self.navBar)
         self.add_widget(layout)
+
+    def on_pre_enter(self):
+        self.updateScreenLanguage(self.config["DISPLAY"]["language"])
+        
+    def updateScreenLanguage(self, language):
+        navStrings = json.load( open("LangStrings.json") )
+        langNavStrings = navStrings[language]["navButton"]
+
+		# Getting the buttons contained in navbar, and then looping 
+        # through them to update their text
+        for button in self.navBar.children:
+            button.text = langNavStrings[button.name]
+            
 
     def toHelp(self, instance):
         self.manager.transition.direction = 'down'

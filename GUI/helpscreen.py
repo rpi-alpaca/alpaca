@@ -44,12 +44,12 @@ def createHelpPanels(language):
 	infoPanels = HelpPanels()
 	infoPanels.name = "infoPanel"
 
-	helpStrings = json.load( open("HelpStrings.json") )
+	helpStrings = json.load( open("LangStrings.json") )
 
 	tabsToAdd = []
-	tabsToAdd.append( createInfoTab(helpStrings[language], "What") )
-	tabsToAdd.append( createInfoTab(helpStrings[language], "How")  ) 
-	tabsToAdd.append( createInfoTab(helpStrings[language], "Who")  )
+	tabsToAdd.append( createInfoTab(helpStrings[language], "helpWhat") )
+	tabsToAdd.append( createInfoTab(helpStrings[language], "helpHow")  ) 
+	tabsToAdd.append( createInfoTab(helpStrings[language], "helpWho")  )
 
 	# Add in each new tab to the main panels
 	for tab in tabsToAdd:
@@ -77,16 +77,17 @@ class HelpScreen(Screen):
 		layout.add_widget(navBar)
 		self.add_widget(layout)
 
-	def on_enter(self):
-		self.updateLangauge(self.config["DISPLAY"]["language"])
+	def on_pre_enter(self):
+		self.updateScreenLanguage(self.config["DISPLAY"]["language"])
 
-	def updateLangauge(self, language):
-		helpStrings = json.load( open("HelpStrings.json") )
+	def updateScreenLanguage(self, language):
+		helpStrings = json.load( open("LangStrings.json") )
 		stringsOfLanguage = helpStrings[language]
 
 		# Magic numbers get the layout of the screen, then the tabbed panel object,
 		#	then the tabs within it.
 		for tab in (self.children[0].children[1].tab_list):
+			print(tab.name)
 			tab.text = stringsOfLanguage[tab.name]["Title"]
 			tab.content.text = stringsOfLanguage[tab.name]["Body"]
 
