@@ -59,10 +59,9 @@ def createHelpPanels(language):
 
 # Main class for the help menu to build on top of
 class HelpScreen(Screen):
-	def __init__(self, **kwargs):
+	def __init__(self, config, **kwargs):
+		self.config = config
 		super().__init__(**kwargs)
-		config = configparser.ConfigParser()
-		config.read("../config.ini")
 
 		layout = StackLayout()
 		layout.name = "Layout"
@@ -79,10 +78,7 @@ class HelpScreen(Screen):
 		self.add_widget(layout)
 
 	def on_enter(self):
-		config = configparser.ConfigParser()
-		config.read("../config.ini")
-		
-		self.updateLangauge(config["DISPLAY"]["language"])
+		self.updateLangauge(self.config["DISPLAY"]["language"])
 
 	def updateLangauge(self, language):
 		helpStrings = json.load( open("HelpStrings.json") )

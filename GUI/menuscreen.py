@@ -28,7 +28,8 @@ class NavigationBar(BoxLayout):
 
 # Main class for the main menu to build on top of
 class MenuScreen(Screen):
-    def __init__(self, **kwargs):
+    def __init__(self, config, **kwargs):
+        self.config = config
         super().__init__(**kwargs)
 
         layout = StackLayout()

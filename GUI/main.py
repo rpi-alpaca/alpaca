@@ -31,19 +31,19 @@ Builder.load_file('newproject.kv')
 
 class AlpacaApp(App):
     def build(self):
+        # Gather the config file options
+        self.config = configparser.ConfigParser()
+        self.config.read('../config.ini')
+
         # Create the screen manager
         sm = ScreenManager()
-
-        sm.add_widget(MenuScreen(name='Menu'))
-        sm.add_widget(HelpScreen(name='Help'))
-        sm.add_widget(SettingsScreen(name='Settings'))
+        sm.add_widget(MenuScreen(config=self.config, name='Menu'))
+        sm.add_widget(HelpScreen(config=self.config, name='Help'))
+        sm.add_widget(SettingsScreen(config=self.config, name='Settings'))
         sm.add_widget(NewProjectScreen(name='NewProject'))
         sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
         sm.current = 'Menu'
         return sm
-    
-    def updateLanguages(self, language):
-        self.helpScreen.updateLangauge(language)
 
 if __name__ == "__main__":
 	config = configparser.ConfigParser()
