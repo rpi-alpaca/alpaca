@@ -24,8 +24,6 @@ possible_lang = ["Pirate", "English", "Spanish", "French"]
 class NavigationBar(BoxLayout):
     pass
 
-
-
 class SettingsScreen(Screen):
     def returnHome(self, instance):
         self.manager.transition.direction = 'left'
@@ -42,7 +40,6 @@ class SettingsScreen(Screen):
 
 
     def __init__(self, **kwargs):
-
         super(SettingsScreen, self).__init__(**kwargs)
 
         setting_layout = StackLayout()

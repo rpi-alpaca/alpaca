@@ -33,19 +33,17 @@ class AlpacaApp(App):
     def build(self):
         # Create the screen manager
         sm = ScreenManager()
-        self.menuScreen = MenuScreen(name='Menu')
-        self.helpScreen = HelpScreen(name='Help')
-        self.settingsScreen = SettingsScreen(name='Settings')
-        self.newProjectScreen = NewProjectScreen(name='NewProject')
-        self.existingProjectScreen = ExistingProjectScreen(name='ExistingProject')
 
-        sm.add_widget(self.menuScreen)
-        sm.add_widget(self.helpScreen)
-        sm.add_widget(self.settingsScreen)
-        sm.add_widget(self.newProjectScreen)
-        sm.add_widget(self.existingProjectScreen)
+        sm.add_widget(MenuScreen(name='Menu'))
+        sm.add_widget(HelpScreen(name='Help'))
+        sm.add_widget(SettingsScreen(name='Settings'))
+        sm.add_widget(NewProjectScreen(name='NewProject'))
+        sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
         sm.current = 'Menu'
         return sm
+    
+    def updateLanguages(self, language):
+        self.helpScreen.updateLangauge(language)
 
 if __name__ == "__main__":
 	config = configparser.ConfigParser()
