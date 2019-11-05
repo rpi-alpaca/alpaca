@@ -4,10 +4,11 @@ ex: (A) & (B)
 ex: ((A) & (B)) | (C)
 ex: (~A) or ~A
 '''
-string = "(A) & (B) | (C)"
+string = "((A) & (B)) | (C)"
 print("String:", string)
 raw = list(string) # first breaks up the string into
 
+invalid = False
 operation = {"&", "|", ">", "="} # symbols that need two symbols next to them
 # symbols that only need one: ~
 # symbols that need to be completed: ( )
@@ -17,10 +18,31 @@ def next(raw, current):
 		return(True, raw[current + 1])
 	return(False, raw[current])
 
+def matching(string):# function that returns a dictionary of matching parentheses
+	par = {}
+	stackParen = [] # a stack of the indecies of parentheses
+	for i in range(len(string)):
+		if string[i] == "(":
+			# adds a
+			stackParen.append(i)
+			par[i] = -1
+		elif string[i] == ")":
+			# do another thing
+			if not stackParen:
+				return (False, {})
+			par[stackParen[len(stackParen) - 1]] = i
+			del stackParen[len(stackParen) - 1]
+	for i in par:
+		if par[i] == -1:
+			return (False, {})
+	return (True, par)
+
+(matches, loc) = matching(string)
+print(loc)
+'''
 paren = {"(": 0, ")":0} # keeps track of the number of parenthisis
 prev = "" #keeps track of the previous item
 
-invalid = False
 index = 0
 first = True
 # assume that the inputs will have spaces next to them
@@ -52,7 +74,7 @@ for symbol in raw:
 		else:
 			invalid = True
 			break
-
+((c) -> (((A) & (B)) & (D))) -> (D)
 	elif symbol == "~": # good
 		if prev == "op" or prev == ")":
 			invalid = True
@@ -80,3 +102,4 @@ elif paren[")"] is not paren["("]:
     print("Invalid string: Mismatching number of parenthsis")
 else:
 	print("Valid string")
+'''
