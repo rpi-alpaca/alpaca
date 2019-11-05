@@ -38,5 +38,45 @@
             "Title": "ALPACA be made by who?",
             "Body": "ALPACA be a project created 'n maintained by RPI Students fer th' RCOS."
         }
+    },
+    "French":
+    {
+        "What":
+        {
+            "Title": "Qu'est-ce que ALPACA?",
+            "Body": "ALPACA est le processeur de logique automatisé et le moteur de création."
+        },
+        "How":
+        {   
+            "Title": "Comment utilisez-vous ALPACA?",
+            "Body": "Vous avez deux options pour utiliser ALPACA: l’interface textuelle ou l’interface glisser-déposer.",
+            "Command Line": "Je suis basé sur le texte!",
+            "DragNDrop": "Je suis basé sur l'interface graphique!"
+        },
+        "Who":
+        {
+            "Title": "Qui a fait ALPACA?",
+            "Body": "ALPACA est un projet créé et géré par les étudiants RPI pour le RCOS."
+        }
+    },
+    "Spanish":
+    {
+        "What":
+        {
+            "Title": "¿Qué es ALPACA?",
+            "Body": "ALPACA es el procesador lógico automatizado y el motor de creación."
+        },
+        "How":
+        {   
+            "Title": "¿Cómo se usa ALPACA?",
+            "Body": "Tiene dos opciones sobre cómo usar ALPACA, ya sea la interfaz basada en texto o la interfaz de arrastrar y soltar.",
+            "Command Line": "Estoy basado en el texto!",
+            "DragNDrop": "¡Estoy basado en la interfaz gráfica de usuario!!"
+        },
+        "Who":
+        {
+            "Title": "¿Quién hizo ALPACA?",
+            "Body": "ALPACA es un proyecto creado y mantenido por RPI Students para el RCOS."
+        }
     }
 }
