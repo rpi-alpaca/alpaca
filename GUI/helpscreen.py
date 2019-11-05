@@ -78,7 +78,11 @@ class HelpScreen(Screen):
 		layout.add_widget(navBar)
 		self.add_widget(layout)
 
-		self.updateLangauge("Pirate")
+	def on_enter(self):
+		config = configparser.ConfigParser()
+		config.read("../config.ini")
+		
+		self.updateLangauge(config["DISPLAY"]["language"])
 
 	def updateLangauge(self, language):
 		helpStrings = json.load( open("HelpStrings.json") )
