@@ -4,8 +4,11 @@
 #include <stack>
 using namespace std;
 bool isOperator(char token) {
-    if (token == '&' || token == '|' || token == '@'
-            || token == '(' || token == ')') {
+    if (token == '&' 
+        || token == '|' 
+        || token == '@'
+        || token == '(' 
+        || token == ')') {
         return true;
     }
     return false;
@@ -19,7 +22,7 @@ int precedence(char op) {
         return 2;
     }
 }
-void read_token(string str) {
+string read_token(string str) {
     queue<char> outQ;
     stack<char> opS;
     while (str.size()) {
@@ -53,4 +56,12 @@ void read_token(string str) {
         outQ.push(opS.top());
         opS.pop();
     }
+    string outS;
+    while (outQ.size() != 0) {
+        outS += outQ.top();
+        outQ.pop();
+    }
+}
+bool calculate(string input) {
+
 }
