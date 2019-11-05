@@ -1,0 +1,110 @@
+{
+    "English":
+    {
+        "navButton":
+        {
+			"Return": "Return to Main Menu",
+			"Settings": "Settings",
+			"NewProj": "New Project",
+			"ExistProj": "Existing Project"
+        },
+        "helpWhat":
+        {
+            "Title": "What is ALPACA?",
+            "Body": "ALPACA is the (A)utomated (L)ogic (P)rocessor (A)nd (C)reation (E)ngine."
+        },
+        "helpHow":
+        {   
+            "Title": "How do you use ALPACA?",
+            "Body": "You have two options for how to use ALPACA, either the text-based interface or the drag and drop interface.",
+            "Command Line": "I'm based on text!",
+            "DragNDrop": "I'm based on the GUI!"
+        },
+        "helpWho":
+        {
+            "Title": "Who made ALPACA?",
+            "Body": "ALPACA is a project created and maintained by RPI Students for the RCOS."
+        }
+    },
+    "Pirate":
+    {
+		"navButton":
+        {
+			"Return": "Back to th' Menu with ye!",
+			"Settings": "Settin's",
+			"NewProj": "New Project",
+			"ExistProj": "Existin' Project"
+        },
+        "helpWhat":
+        {
+            "Title": "Wha' be ALPACA?",
+            "Body": "ALPACA be th' (A)utomated (L)ogic (P)rocessor (A)nd (C)reation (E)ngine."
+        },
+        "helpHow":
+        {   
+            "Title": "How do ye use ALPACA?",
+            "Body": "Yer options for use be two: either the cursed text-based command line, or the infamous drag-n-drop.",
+            "Command Line": "I be based on text!",
+            "DragNDrop": "I be based on th' GUI!"
+        },
+        "helpWho":
+        {
+            "Title": "ALPACA be made by who?",
+            "Body": "ALPACA be a project created 'n maintained by RPI Students fer th' RCOS."
+        }
+    },
+    "French":
+    {
+		"navButton":
+        {
+			"Return": "Retour au menu principal",
+			"Settings": "Paramètres",
+			"NewProj": "Nouveau projet",
+			"ExistProj": "Projet existant"
+        },
+        "helpWhat":
+        {
+            "Title": "Qu'est-ce que ALPACA?",
+            "Body": "ALPACA est le processeur de logique automatisé et le moteur de création."
+        },
+        "helpHow":
+        {   
+            "Title": "Comment utilisez-vous ALPACA?",
+            "Body": "Vous avez deux options pour utiliser ALPACA: l’interface textuelle ou l’interface glisser-déposer.",
+            "Command Line": "Je suis basé sur le texte!",
+            "DragNDrop": "Je suis basé sur l'interface graphique!"
+        },
+        "helpWho":
+        {
+            "Title": "Qui a fait ALPACA?",
+            "Body": "ALPACA est un projet créé et géré par les étudiants RPI pour le RCOS."
+        }
+    },
+    "Spanish":
+    {
+		"navButton":
+        {
+			"Return": "Volver al menú principal",
+			"Settings": "Configuraciones",
+			"NewProj": "Nuevo proyecto",
+			"ExistProj": "Proyecto existente"
+        },
+        "helpWhat":
+        {
+            "Title": "¿Qué es ALPACA?",
+            "Body": "ALPACA es el procesador lógico automatizado y el motor de creación."
+        },
+        "helpHow":
+        {   
+            "Title": "¿Cómo se usa ALPACA?",
+            "Body": "Tiene dos opciones sobre cómo usar ALPACA, ya sea la interfaz basada en texto o la interfaz de arrastrar y soltar.",
+            "Command Line": "Estoy basado en el texto!",
+            "DragNDrop": "¡Estoy basado en la interfaz gráfica de usuario!!"
+        },
+        "helpWho":
+        {
+            "Title": "¿Quién hizo ALPACA?",
+            "Body": "ALPACA es un proyecto creado y mantenido por RPI Students para el RCOS."
+        }
+    }
+}
