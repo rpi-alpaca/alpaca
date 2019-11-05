@@ -50,9 +50,6 @@ class SettingsScreen(Screen):
         old_lang = self.config["DISPLAY"]["language"]
         self.config.set('DISPLAY', 'language', language)
 
-        self.updateDropdown(language, old_lang)
-        self.mainbutton.text = old_lang
-
         popup_content = BoxLayout()
         change_lan_yes = Button(text='Yes', size=(100,100))
         change_lan_no = Button(text='No', size=(100,100))
