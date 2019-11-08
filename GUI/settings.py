@@ -62,17 +62,15 @@ class SettingsScreen(Screen):
                         content=popup_content,
                         size_hint=(None, None), size=(500, 500))
             change_lan_no.bind(on_press=popup.dismiss)
-            change_lan_yes.bind(on_press =self.changeLanguagePerm)
+            print(popup)
+            change_lan_yes.bind(on_press=self.changeLanguagePerm)
+            change_lan_yes.bind(on_release=popup.dismiss)
             popup.open()
-            # Code to add later: allows choosing if default gets updated
-            # choice = input(f"Would you like to save {language} as your default language? (y/n)")
-            # if choice.lower() == "y":
-            # else:
-            #     print("Default not changed!")
 
     def changeLanguagePerm(self, instance):
         with open('../config.ini', 'w') as configfile:
             self.config.write(configfile)
+
 
     def __init__(self, config, **kwargs):
         self.config = config
