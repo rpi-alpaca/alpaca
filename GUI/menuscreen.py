@@ -11,6 +11,9 @@ from kivy.lang import Builder
 
 import json
 
+from Navigation import NavigationBar
+from Navigation import NavigationButton
+
 Builder.load_file('alpaca.kv')
 
 class LogoBody(BoxLayout):
@@ -21,14 +24,6 @@ class AlpacaLogo(Image):
 
 class HelpButton(Button):
     pass
-
-class NavigationButton(Button):
-    def __init__(self, name, **kwargs):
-        super().__init__()
-        self.name = name
-
-class NavigationBar(BoxLayout):
-    pass   
 
 # Main class for the main menu to build on top of
 class MenuScreen(Screen):
