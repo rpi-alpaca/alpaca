@@ -3,7 +3,6 @@
 #define _STATEMENT_EVALUATOR_H_
 
 #include "Tree.h"
-#include "evaluationstorage.h"
 #include <functional>
 #include <unordered_map>
 #include <vector>
