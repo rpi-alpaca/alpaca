@@ -21,6 +21,7 @@ int precedence(char op) {
     if (op == '|' || op == '@') {
         return 2;
     }
+    return -1; //temp
 }
 std::string read_token(std::string str) {
     std::queue<char> outQ;
@@ -61,7 +62,8 @@ std::string read_token(std::string str) {
         outS += outQ.front();
         outQ.pop();
     }
+    return outS; //temp
 }
 bool calculate(std::string input) {
-
+	return false; //temp;
 }
