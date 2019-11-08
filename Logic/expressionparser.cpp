@@ -21,6 +21,7 @@ int precedence(char op) {
     if (op == '|' || op == '@') {
         return 2;
     }
+    return -1; //temp
 }
 string read_token(string str) {
     queue<char> outQ;
@@ -58,10 +59,11 @@ string read_token(string str) {
     }
     string outS;
     while (outQ.size() != 0) {
-        outS += outQ.top();
+        outS += outQ.front();
         outQ.pop();
     }
+    return outS; //temp
 }
 bool calculate(string input) {
-
+    return false; //temp
 }
