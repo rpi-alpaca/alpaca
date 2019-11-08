@@ -2,7 +2,7 @@
 #include <string>
 #include <queue>
 #include <stack>
-using namespace std;
+
 bool isOperator(char token) {
     if (token == '&' 
         || token == '|' 
@@ -22,13 +22,13 @@ int precedence(char op) {
         return 2;
     }
 }
-string read_token(string str) {
-    queue<char> outQ;
-    stack<char> opS;
+std::string read_token(std::string str) {
+    std::queue<char> outQ;
+    std::stack<char> opS;
     while (str.size()) {
         char token = str[0];
         str = str.substr(1, str.size());
-        if (isalpha(token)) {
+        if (std::isalpha(token)) {
             outQ.push(token);
         }
         if (isOperator(token)) {
@@ -56,12 +56,12 @@ string read_token(string str) {
         outQ.push(opS.top());
         opS.pop();
     }
-    string outS;
+    std::string outS;
     while (outQ.size() != 0) {
-        outS += outQ.top();
+        outS += outQ.front();
         outQ.pop();
     }
 }
-bool calculate(string input) {
+bool calculate(std::string input) {
 
 }
