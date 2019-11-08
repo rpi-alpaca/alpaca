@@ -1,12 +1,33 @@
 #:kivy 1.11.1
 
 <HelpScreen>:
-    FloatLayout:
-        BoxLayout:
-            Label:
-                text: "Help screen"
-            Button:
-                text: 'Back to menu'
-                on_press:
-                    root.manager.transition.direction = 'left'
-                    root.manager.current = 'Menu'
+    BoxLayout:
+        name: "HelpScreen"
+        orientation: "vertical"
+        font_name: 'Roboto-Bold.ttf'
+
+
+<NavigationBar>:
+    name: "NavBar"
+    size_hint_y: 0.1
+    padding: 10
+    spacing: 10
+
+    canvas.before:
+        Color:
+            rgba: 0.7, 0.7, 0.7, 1
+		Rectangle:
+            pos: self.center
+            size: self.width, self.height/11
+        
+<HelpPanels>:
+    name: "HelpPanels"
+    do_default_tab: False
+    size_hint_y: .9
+    tab_width: root.width / 3
+    
+    TabbedPanelStrip:
+        background_color: (0, 0, 1, .5)    # 50% translucent blue
+        border: [0, 0, 0, 0]
+        background_image: ''
+    
