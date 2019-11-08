@@ -16,15 +16,15 @@ from kivy.lang import Builder
 import configparser
 import json
 
+from Navigation import NavigationBar
+from Navigation import NavigationButton
+
 Builder.load_file('helpscreen.kv')
 
 class HelpPanelsHeader(TabbedPanelHeader):
 	pass
 
 class HelpPanels(TabbedPanel):
-	pass
-
-class NavigationBar(BoxLayout):
 	pass
 
 def createInfoTab(stringDict, tabName):
@@ -69,7 +69,7 @@ class HelpScreen(Screen):
 		infoPanels = createHelpPanels(config["DISPLAY"]["language"])
 
 		navBar = NavigationBar()
-		returnButton = Button(text="Return to home")
+		returnButton = NavigationButton(name="Return", text="Return to home")
 		returnButton.bind(on_press=self.returnHome)
 		navBar.add_widget(returnButton)
 

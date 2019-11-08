@@ -21,16 +21,11 @@ from kivy.lang import Builder
 import configparser
 import json
 
+from Navigation import NavigationBar
+from Navigation import NavigationButton
+
 Builder.load_file('settings.kv')
 possible_lang = sorted(["Pirate", "English", "Spanish", "French"])
-
-class NavigationButton(Button):
-    def __init__(self, name, **kwargs):
-        super().__init__()
-        self.name = name
-
-class NavigationBar(BoxLayout):
-    pass
 
 class SettingsScreen(Screen):
     def returnHome(self, instance):
