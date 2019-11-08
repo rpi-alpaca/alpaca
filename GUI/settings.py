@@ -48,25 +48,27 @@ class SettingsScreen(Screen):
 
     def changeLanguage(self, language):
         old_lang = self.config["DISPLAY"]["language"]
-        self.config.set('DISPLAY', 'language', language)
 
-        popup_content = BoxLayout()
-        change_lan_yes = Button(text='Yes', size=(100,100))
-        change_lan_no = Button(text='No', size=(100,100))
-        popup_content.add_widget(change_lan_yes)
-        popup_content.add_widget(change_lan_no)
+        if old_lang != language:
+            self.config.set('DISPLAY', 'language', language)
 
-        popup = Popup(title='Do you wish to set this language as the default?',
-                      content=popup_content,
-                      size_hint=(None, None), size=(500, 500))
-        change_lan_no.bind(on_press=popup.dismiss)
-        change_lan_yes.bind(on_press =self.changeLanguagePerm)
-        popup.open()
-        # Code to add later: allows choosing if default gets updated
-        # choice = input(f"Would you like to save {language} as your default language? (y/n)")
-        # if choice.lower() == "y":
-        # else:
-        #     print("Default not changed!")
+            popup_content = BoxLayout()
+            change_lan_yes = Button(text='Yes', size=(100,100))
+            change_lan_no = Button(text='No', size=(100,100))
+            popup_content.add_widget(change_lan_yes)
+            popup_content.add_widget(change_lan_no)
+
+            popup = Popup(title='Do you wish to set this language as the default?',
+                        content=popup_content,
+                        size_hint=(None, None), size=(500, 500))
+            change_lan_no.bind(on_press=popup.dismiss)
+            change_lan_yes.bind(on_press =self.changeLanguagePerm)
+            popup.open()
+            # Code to add later: allows choosing if default gets updated
+            # choice = input(f"Would you like to save {language} as your default language? (y/n)")
+            # if choice.lower() == "y":
+            # else:
+            #     print("Default not changed!")
 
     def changeLanguagePerm(self, instance):
         with open('../config.ini', 'w') as configfile:
