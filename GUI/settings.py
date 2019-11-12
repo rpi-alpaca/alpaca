@@ -82,7 +82,7 @@ class SettingsScreen(Screen):
 
         self.languages = self.buildDropdown(possible_lang)
 
-        self.mainbutton = Button(text=self.config["DISPLAY"]["language"], size_hint=(None, None))
+        self.mainbutton = Button(text=self.config["DISPLAY"]["language"], size_hint=(0.1, 1))
         self.mainbutton.bind(on_release=self.languages.open)
         self.languages.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
 
