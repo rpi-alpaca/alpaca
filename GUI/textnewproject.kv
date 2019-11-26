@@ -13,18 +13,19 @@
                     size_hint_x: .25
                     TabbedPanel:
                         id: panel2
-                        default_tab:  DD_tab
+                        default_tab:  lolDoesntMatter
                         background_color: 1,1,1,1
                         TabbedPanelItem:
                             id: DD_tab
                             text: "Drag&drop"
                             on_release:
-                                root.manager.current = "BlockNewProject"
-                                panel2.switch_to(panel2.tab_list[0], True)
+                                root.manager.current = "ProjectDecide"
+                                panel2.current = "lolDoesntMatter"
                         TabbedPanelItem:
                             text: "text"
                             id:  lolDoesntMatter
-                            TextInput: s
+                            TextInput:
+                                text: ""
 
 
             BoxLayout:
