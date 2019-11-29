@@ -1,0 +1,61 @@
+TKoz - Propositional logic statement parsing notes.
+Last updated: 2019-09-21
+
+Expression parsing proposal:
+
+An expression (or sub-expression) consists of 1 or more sub-expressions
+connected by the 3 operators: ~, &, and |. Here, a sub-expression consists of a
+variable or a matched () pair with its contents. To parse an expression, find
+the sub-expressions first. If an OR operator exists, which is lowest priority,
+create an OR gate of the expressions separated by the | operators. Else if an
+AND operator exists, create an AND gate similarly. Else if a NOT operator
+exists, create a NOT gate of the single following sub-expression. In each of
+these cases, recursively parse the sub-expressions. For properly formatted
+expressions, this will terminate because at a given parenthesis depth level,
+up to 3 steps will occur, "removing" 1 type of operator each time until none
+remain except for single expressions that must be (recursively) evaluated.
+
+Variable names can begin with a letter (uppercase or lowercase) and be followed
+by other letters (both cases), underscores (_), hyphens (-), and digits. The
+single digits 0 and 1 are reserved to express true and false respectively and
+are differentiated from variables because they do not start with a letter. All
+other names and characters should be considered invalid.
+
+Below is a context free grammar (CFG) to describe how valid expressions can be
+formed. Note that a ~ operator is meant to operate on one expression and can
+only appear before an expression. It cannot appear directly after an expression.
+
+Context free grammar (CFG) to define logic expressions allowed:
+E -> (E) | E|E | E&E | ~(E) | V
+V -> ~V | variable
+
+Examples of deriving some expressions with the CFG:
+
+(A&B|C)|~D:
+E -> E|E -> (E)|E -> (E&E)|E -> (E&E|E)|E -> (A&B|C)|V -> (A&B|C)|~D
+
+A|~B&~A:
+E -> E|E -> E|E&E -> A|V&V -> A|~V&~V -> A|~B&~A
+
+((A)|(B)|~(C)):
+E -> (E) -> (E|E|E) -> ((E)|(E)|~(E)) -> ((A)|(B)|~(C))
+
+Here, I describe a few logic expressions and how to break them up for recursive
+evaluation as described above:
+
+(A&(B|B)|~C):
+Consists of 1 sub-expression (because of the matched parenthesis) so we evaluate
+the contents of the outermost parenthesis.
+
+(A)&B|C&~D:
+The sub-expressions are (A), B, C, and D. Since we have an |, we break up the
+statement by this and evaluate the separated sub-expressions: (A)&B and C&~D
+
+~(A)&B&C:
+Similar to above but this time there is no | so be break it up by & which is a
+higher priority operator. The 3 sub-expressions to evaluate are ~(A), B, and C.
+
+~(A|B):
+There is 1 sub-expression and no | or & operators so we must have a single ~ at
+the left followed by a single sub-expression. In this case we recursively
+evaluate A|B.

@@ -1,0 +1,26 @@
+#:kivy 1.11.1
+
+<SettingsScreen>:
+    BoxLayout:
+        size_hint_y: 0.94
+        orientation: "vertical"
+
+<Slider>
+    size_hint_y: 0.94
+    rows: 8
+    cols: 1
+
+    canvas:
+        Rectangle:
+            Color:
+                rgba: 1,1,0,1
+
+            Label:
+                text: "Slider"
+
+            Slider:
+                id: slider
+                min: 10
+                max: 64
+                step: 2
+                orientation: 'horizontal'

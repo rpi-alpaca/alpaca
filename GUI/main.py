@@ -12,9 +12,15 @@ from kivy.config import Config
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.scatterlayout import ScatterLayout
+from kivy.uix.screenmanager import ScreenManager, Screen, WipeTransition
+from kivy.core.window import Window
 
-class HelpScreen(Screen):
-	pass
+# Screens defined in separate screen .py files
+from helpscreen import HelpScreen
+from settings import SettingsScreen
+from menuscreen import MenuScreen
+
+import configparser
 
 class BlockNewProjectScreen(Screen): # gui screen
 
@@ -43,7 +49,6 @@ class MenuScreen(Screen):
 	pass
 
 # Loading Multiple .kv files
-Builder.load_file('alpaca.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
 Builder.load_file('blocknewproject.kv')
@@ -62,7 +67,32 @@ class AlpacaApp(App):
 		sm.add_widget(DecideProjectScreen(name='ProjectDecide'))
 		sm.current = 'ProjectDecide'
 		return sm
+Builder.load_file('newproject.kv')
+
+class AlpacaApp(App):
+    def build(self):
+        # Gather the config file options
+        self.config = configparser.ConfigParser()
+        self.config.read('../config.ini')
+
+        # Create the screen manager
+        sm = ScreenManager()
+        sm.add_widget(MenuScreen(config=self.config, name='Menu'))
+        sm.add_widget(HelpScreen(config=self.config, name='Help'))
+        sm.add_widget(SettingsScreen(config=self.config, name='Settings'))
+        sm.add_widget(NewProjectScreen(name='NewProject'))
+        sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
+        sm.current = 'Menu'
+        return sm
 
 if __name__ == "__main__":
-	Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
+	config = configparser.ConfigParser()
+	config.read('../config.ini')
+	default = config['DEFAULT']
+
+    # Apply default settings to the root window before execution
+	Window.size = ( int(default['WindowSize_width']), int(default['WindowSize_height']) )
+	Window.minimum_width = default['Window_Minimum_width']
+	Window.minimum_height = default['Window_Minimum_height']
+
 	AlpacaApp().run()

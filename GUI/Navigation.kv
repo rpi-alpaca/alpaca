@@ -1,0 +1,17 @@
+#:kivy 1.11.1
+
+<NavigationBar>:
+    size_hint_y: 0.06
+    padding: 5
+    spacing: 5
+
+    canvas.before:
+        Color: 
+            rgba: 0.7,0.7,0.7,1
+        Rectangle:
+            size: root.size
+
+<NavigationButton>:
+
+    font_name: 'Roboto-Bold.ttf'
+    font_size: 42
