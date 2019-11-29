@@ -1,0 +1,22 @@
+Logic Group
+
+Manager: David Kim
+
+Members: Alexandra Hsueh, Hali Cai, Nicholas Yao, Sitong Liu
+
+
+
+Random Ideas:
+Make a class for nodes so that we can make each node lead to a statement with a left and right side and then the evaluate function would just be recursing through the left and right and then go back up to evaluate the last part
+
+TODO:
+- Make a Node class:
+	- Left pointer to left statement
+	- Right pointer to right statement
+	- Value for the Connector between
+	- Value to mark for negation sign
+- Evaluator
+	- Recurse to get left value and right value and then evaluate value for that node
+	- apply negation if available
+	- return value to parent
+	
