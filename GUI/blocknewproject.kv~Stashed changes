@@ -1,0 +1,49 @@
+#:kivy 1.11.1
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<BlockNewProjectScreen>:
+    FloatLayout:
+        BoxLayout:
+            BoxLayout:
+                orientation: "horizontal"
+                height: 30
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_x: .25
+
+                    TabbedPanel:
+                        id: panel
+                        default_tab: lolDoesntMatter
+                        background_color: 1,1,1,1
+                        TabbedPanelItem:
+                            text: "Drag&drop"
+                            id: DD_tab
+                            on_press:
+                            Label:
+                                text: "Content of First Panel"
+                        TabbedPanelItem:
+                            text: "text"
+                            id:  lolDoesntMatter
+                            on_release:
+                                root.manager.transition = NoTransition(duration=0)
+                                root.manager.current = "TextNewProject"
+                                panel.switch_to(panel.tab_list[1], True)
+
+            BoxLayout:
+                orientation: "horizontal"
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    TabbedPanel:
+                        do_default_tab: False
+
+                        TabbedPanelItem:
+                            text: 'Blocks'
+                            Button:
+                                text: 'add block'
+                                on_release: root.createNew()
+                        TabbedPanelItem:
+                            text: 'Lemmas'
+                            Button:
+                                text: 'import lemma'
