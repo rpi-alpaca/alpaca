@@ -31,12 +31,12 @@ class BlockNewProjectScreen(Screen): # gui screen
 
 class TextNewProjectScreen(Screen): # text base screen
 
-	def parse(self, string):
-		print(string)
+    def parse(self, string):
+        print(string)
 '''
 class aButton(Button):
-	def on_touch_down(self, touch):
-		return False
+    def on_touch_down(self, touch):
+        return False
 
 '''
 class ExistingProjectScreen(Screen):
@@ -46,28 +46,29 @@ class DecideProjectScreen(Screen):
         pass
 
 class MenuScreen(Screen):
-	pass
+    pass
 
 # Loading Multiple .kv files
+Builder.load_file('alpaca.kv')
 Builder.load_file('existingproject.kv')
 Builder.load_file('helpscreen.kv')
 Builder.load_file('blocknewproject.kv')
 Builder.load_file('textnewproject.kv')
 Builder.load_file('newprojectdecide.kv')
 
-class AlpacaApp(App):
-	def build(self):
-        # Create the screen manager
-		sm = ScreenManager()
-		sm.add_widget(MenuScreen(name='Menu'))
-		sm.add_widget(HelpScreen(name='Help'))
-		sm.add_widget(BlockNewProjectScreen(name='BlockNewProject'))
-		sm.add_widget(TextNewProjectScreen(name='TextNewProject'))
-		sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
-		sm.add_widget(DecideProjectScreen(name='ProjectDecide'))
-		sm.current = 'ProjectDecide'
-		return sm
-Builder.load_file('newproject.kv')
+# class AlpacaApp(App):
+# 	def build(self):
+#         # Create the screen manager
+# 		sm = ScreenManager()
+# 		sm.add_widget(MenuScreen(name='Menu'))
+# 		sm.add_widget(HelpScreen(name='Help'))
+# 		sm.add_widget(BlockNewProjectScreen(name='BlockNewProject'))
+# 		sm.add_widget(TextNewProjectScreen(name='TextNewProject'))
+# 		sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
+# 		sm.add_widget(DecideProjectScreen(name='ProjectDecide'))
+# 		sm.current = 'ProjectDecide'
+# 		return sm
+# Builder.load_file('newproject.kv')
 
 class AlpacaApp(App):
     def build(self):
@@ -75,24 +76,24 @@ class AlpacaApp(App):
         self.config = configparser.ConfigParser()
         self.config.read('../config.ini')
 
-        # Create the screen manager
+        # Create the screen manager	
         sm = ScreenManager()
-        sm.add_widget(MenuScreen(config=self.config, name='Menu'))
-        sm.add_widget(HelpScreen(config=self.config, name='Help'))
-        sm.add_widget(SettingsScreen(config=self.config, name='Settings'))
-        sm.add_widget(NewProjectScreen(name='NewProject'))
-        sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
+        sm.add_widget( MenuScreen(config=self.config, name='Menu') )
+        # sm.add_widget( HelpScreen(config=self.config, name='Help') )
+        # sm.add_widget( SettingsScreen(config=self.config, name='Settings') )
+        # sm.add_widget( NewProjectScreen(name='NewProject') )
+        # sm.add_widget( ExistingProjectScreen(name='ExistingProject') )
         sm.current = 'Menu'
         return sm
 
 if __name__ == "__main__":
-	config = configparser.ConfigParser()
-	config.read('../config.ini')
-	default = config['DEFAULT']
+    config = configparser.ConfigParser()
+    config.read('../config.ini')
+    default = config['DEFAULT']
 
     # Apply default settings to the root window before execution
-	Window.size = ( int(default['WindowSize_width']), int(default['WindowSize_height']) )
-	Window.minimum_width = default['Window_Minimum_width']
-	Window.minimum_height = default['Window_Minimum_height']
+    Window.size = ( int(default['WindowSize_width']), int(default['WindowSize_height']) )
+    Window.minimum_width = default['Window_Minimum_width']
+    Window.minimum_height = default['Window_Minimum_height']
 
-	AlpacaApp().run()
+    AlpacaApp().run()
