@@ -78,11 +78,11 @@ class AlpacaApp(App):
 
         # Create the screen manager	
         sm = ScreenManager()
-        sm.add_widget( MenuScreen(config=self.config, name='Menu') )
-        # sm.add_widget( HelpScreen(config=self.config, name='Help') )
-        # sm.add_widget( SettingsScreen(config=self.config, name='Settings') )
-        # sm.add_widget( NewProjectScreen(name='NewProject') )
-        # sm.add_widget( ExistingProjectScreen(name='ExistingProject') )
+        sm.add_widget(MenuScreen(config=self.config, name='Menu'))
+        sm.add_widget(HelpScreen(config=self.config, name='Help'))
+        sm.add_widget(SettingsScreen(config=self.config, name='Settings'))
+        sm.add_widget(NewProjectScreen(name='NewProjectDecide'))
+        sm.add_widget(ExistingProjectScreen(name='ExistingProject'))
         sm.current = 'Menu'
         return sm
 
