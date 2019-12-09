@@ -1,3 +1,4 @@
+# Settings Tab of ALPACA
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.tabbedpanel import TabbedPanelHeader
@@ -27,11 +28,14 @@ from Navigation import NavigationButton
 Builder.load_file('settings.kv')
 possible_lang = sorted(["Pirate", "English", "Spanish", "French"])
 
+#  Main settings Class
 class SettingsScreen(Screen):
+    # Function that returns user to the home page when the approriate button is pressed
     def returnHome(self, instance):
         self.manager.transition.direction = 'left'
         self.manager.current = 'Menu'
 
+    # Function that builds the dropdown menu for languages
     def buildDropdown(self, langs):
         languages = DropDown()
         for index in range(len(langs)):
@@ -41,6 +45,7 @@ class SettingsScreen(Screen):
             languages.add_widget(btn)
         return languages
 
+    # Function that changes language temporarily by changing config
     def changeLanguage(self, language):
         old_lang = self.config["DISPLAY"]["language"]
 
@@ -62,28 +67,33 @@ class SettingsScreen(Screen):
             change_lan_yes.bind(on_release=popup.dismiss)
             popup.open()
 
+    # Function that permently changes the language by comminting all changes to config file
     def changeLanguagePerm(self, instance):
         with open('../config.ini', 'w') as configfile:
             self.config.write(configfile)
 
-
+    # Main function that builds the Settings page
     def __init__(self, config, **kwargs):
         self.config = config
         super(SettingsScreen, self).__init__(**kwargs)
 
+        # Creates the main layout
         setting_layout = StackLayout()
 
+        # Adds the high level widgets
         self.navBar = NavigationBar()
         slide = Slider(min=-100, max=100, value=25)
         returnBtn = NavigationButton(name="Return", text = "Return to Home")
         returnBtn.bind(on_press=self.returnHome)
 
+         # Creates the language dropdown menu and associated buttons
         self.languages = self.buildDropdown(possible_lang)
 
         self.mainbutton = Button(text=self.config["DISPLAY"]["language"], size_hint=(0.1, 1))
         self.mainbutton.bind(on_release=self.languages.open)
         self.languages.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
 
+        # Adds all widgets to layout
         self.navBar.add_widget(returnBtn)
         self.navBar.add_widget(self.mainbutton)
 
@@ -91,9 +101,11 @@ class SettingsScreen(Screen):
         setting_layout.add_widget(self.navBar)
         self.add_widget(setting_layout)
 
+    # Function that is called before the usuer is switched to settings screen
     def on_pre_enter(self):
         self.updateScreenLanguage(self.config["DISPLAY"]["language"])
 
+    # Function that updates the on screen language right before the user switches
     def updateScreenLanguage(self, language):
         navStrings = json.load( open("LangStrings.json") )
         langNavStrings = navStrings[language]["navButton"]
