@@ -24,6 +24,7 @@ Bi-Conitional : the two statements have to have the same truth value to be true
 
 ## Truth table
 1) A truth table is a way of representing all possible truth values of a prepositional statement  
+	```
 	ex: A and B
 	A | B | A and B
 	---------------
@@ -31,6 +32,7 @@ Bi-Conitional : the two statements have to have the same truth value to be true
 	T | F | F
 	F | T | F
 	F | F | F
+	```
 
 ## Functional completeness
 Functional complete means that all possible truth tables can be made.
