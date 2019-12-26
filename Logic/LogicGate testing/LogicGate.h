@@ -9,6 +9,8 @@
 //Will string be needed?
 #include <string>
 
+#define std::map<long double, std::pair<char, std::pair<char, char>>> SOMETHING
+
 class LogicGate{
 public:
 	bool addStatement(char addState);
@@ -23,7 +25,9 @@ public:
 
 private:
 	std::unordered_map<char, bool> initStatements;
-	//std::map<>
+	//std::map<long double, std::pair<char, std::pair<char, char>>>
+	//If seen optimizations are found, do not need to go deeper with statement evaluation
+	//std::vector<char, bool, bool> pruneOptimize
 };
 
 #endif
